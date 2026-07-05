@@ -1,0 +1,182 @@
+Website Development Requirement Document
+Company Name: Mindcept Consulting LLP 
+New website Domain: mindceptconsulting.com
+Old / Exsisting website: https://www.mindcept.in/ Real Estate Advisory | MindCept Consulting this website was build on WIX and hosted on that. 
+We will devlope a new website: mindceptconsulting.com the domain is available on hostindia.net
+
+Mindcept Consulting 
+1. Project Objective
+Develop a modern, fast, SEO-friendly, mobile-responsive website that generates high-quality leads for Industrial, Warehouse, Land, Residential, Commercial Office, and Retail real estate advisory services.
+
+2. Website Pages
+Main Pages
+Home
+About Us : It is known that Real Estate cannot be stolen or carried away! But keeping it stagnant never helped anyone either…
+Real Estate needs to be nurtured and that involves smart thinking, timely action & above all a correct MINDset. Cohesive planning, expert guidance coupled with unique methods help achieve desired results along with optimum returns; making this function a conCEPT where our mind needs the right support and key insights to make the right decision!
+Keeping the above thought in factual consideration was born “MINDCEPT” – a platform to enable our clients cultivate and magnify their Real Estate ideas with unique concepts arrived at after decades of understanding the pulse of the real-estate playing field from the ground up!
+
+Services:
+·  Industrial & Investment Advisory → Industrial · Warehousing · Land Services
+Industrial: Tailored advice comprehensive and logistics, and commercial provided to industrial services occupiers, landlords, developers and investors on a national scale.
+Warehousing: With over two decades of our team in land expertise,specializes acquisition classes, for all asset valuation,strategic partnerships and project advisory.
+Land Services: With over two decades of our team in land expertise, specializes acquisition classes, for all asset 
+valuation, strategic partnerships and project advisory. 
+
+·  Transaction Advisory → Residential · Commercial Leasing · Retail Leasing
+Sales & marketing services designed to strengthen residential project positioning, generate qualified demand and improve conversions. Powered by market intelligence, AI-led strategies and technology-enabled execution, we help developers accelerate inventory movement and maximise project visibility.
+With a vast network, our experts deliver integrated a fully office approach, providing endto-end service throughout the asset's life cycle.
+Retail Leasing Services 
+·  Delivering Integrated Real Estate Services → Specialty Development · Bank Auction Assets · Investment Sales
+Deliverying Integrated Real Estate Services 
+Specialty Development: Collaborating with investors and corporates on special projects like data centers, 
+hospitals, hotels, and schools, each with unique goals and profit potential.
+Bank Auction Assets: the acquisition of distressed assets from bank auctions and assisting financial institutions in strategic disposition.
+Investment Sales: Our in-house capital markets and research platforms maximize value for all property types, leveraging industry expertise to drive 
+long-term success.
+·  Project Management → Design & Build · Redevelopment PMC · Cost, Quality & Schedule
+
+Project Management: A comprehensive project delivery approach wherein we undertake both the design development and execution of the project. This integrated model ensures seamless coordination, optimised costs, faster project delivery and greater accountability throughout the project lifecycle. 
+
+Kindly note Industrial & Investment Advisory, Transaction Advisory, Delivering Integrated Real Estate Service and Project Management are our key services and below each section we need to have respective services. You can create landing page for each services line mentioned. 
+
+Insights / Blog
+We will be posting Blogs and insert few real esate reports and content tent, you can provide provision. 
+Contact Us
+
+
+3. Homepage Requirements
+Homepage should include:
+Professional banner
+Company introduction
+Property Listing option  
+Search Property section 
+Featured Properties
+Why Choose Mindcept
+Our Services
+Client Testimonials
+Trusted Clients
+Latest Blogs
+Contact Form
+WhatsApp Button
+Call Now Button
+Social Media Instagram , Facebook and Linekedin
+
+
+
+
+
+4. Property Listing Module
+Each property should have:
+Property Images
+Property Type
+Location
+Area
+Price
+Property Description
+Amenities
+Download Brochure
+Google Map
+Contact Advisor Button
+WhatsApp Enquiry
+Filters:
+City (For now we are only in Pune Market)
+Property Type
+Budget
+Area
+Availability
+
+5. Lead Generation
+Website should include:
+Contact Forms
+Property Enquiry Forms
+Callback Request
+Download Brochure Form
+WhatsApp Integration
+Click-to-Call Button
+Newsletter Subscription
+
+
+
+6. SEO Requirements
+SEO-friendly URLs
+Editable Meta Title & Description
+XML Sitemap
+Robots.txt
+Schema Markup
+Image Optimization
+Fast Page Speed
+Alt Tags for Images
+Breadcrumb Navigation
+
+7. Marketing Integrations
+Developer to integrate:
+Google Analytics 4
+Google Tag Manager
+Google Search Console
+Google Ads Conversion Tracking
+Meta Pixel
+Meta Conversion API
+WhatsApp Business
+CRM Lead Integration
+
+8. Performance
+Website should have:
+SSL Certificate
+Daily Back / Weekly or Montly is also fine 
+Mobile Responsive (We can do it later)
+Fast Loading Speed
+Security Firewall
+Malware Protection
+Image Compression
+Caching Enabled
+
+9. Admin Features
+Admin should be able to:
+Add/Edit Properties
+Add Blogs
+Upload Images
+Change Content
+Manage Leads
+Manage Forms
+Update SEO Details
+No coding should be required for routine updates.
+
+10. Deliverables
+Developer must provide:
+Complete Website
+Source Code
+Admin Login
+Hosting Access (We will provide the hosting)
+Domain Configuration (
+Database Backup (Mango DB to be used we will provide the details.)
+User Manual
+All Login Credentials
+Basic Training 
+
+11. Ownership
+The following must remain under Mindcept Consulting ownership:
+Domain Name
+Hosting Account
+Website Files
+Database
+Google Analytics
+Google Tag Manager
+Search Console
+Meta Business Manager
+Meta Pixel
+Google Ads Account
+
+12. Timeline
+If we have the basic website live in before 15th July 2026 really helpful. 
+
+13. Acceptance Criteria
+Website will be considered complete only after:
+All pages are functional
+Mobile responsive (We can discuss)
+Forms capture leads successfully
+Analytics and tracking are working
+SEO basics are implemented
+Website speed is optimized
+SSL is active
+Admin credentials are handed over
+Final approval from Mindcept Consulting
