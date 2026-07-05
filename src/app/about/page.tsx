@@ -100,9 +100,9 @@ export default function AboutPage() {
                   {m.value}
                   <span className="text-ember">{m.suffix}</span>
                 </p>
-                <h2 className="mt-3 font-display text-lg font-semibold">
+                <h3 className="mt-3 font-display text-lg font-semibold">
                   {m.heading}
-                </h2>
+                </h3>
                 <p className="mt-2 text-sm leading-relaxed text-white/60">
                   {m.description}
                 </p>
