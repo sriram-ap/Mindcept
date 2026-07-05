@@ -1,0 +1,76 @@
+# PROGRESS.md
+
+Snapshot date: 2026-07-04 (strategy-alignment session)
+
+## Completed work
+
+- **Strategy alignment.** Read all three canonical documents; resolved the
+  business-domain conflict (real estate advisory, not business transformation
+  consulting) — full decision record in `GAP_ANALYSIS.md`.
+- **Full Milestone 1 build** (the repo previously contained only a stub
+  README — no prior code existed on GitHub to preserve; see GAP_ANALYSIS.md
+  Finding 1):
+  - Next.js 15 App Router + React 19 + TypeScript strict + Tailwind 4.
+  - Brand system from the approved design prototype.
+  - Pages: Home (13 sections), About, Contact, Insights, 12 service landing
+    pages, 404. All prerendered.
+  - Lead capture: two Zod-validated forms → `/api/enquiry` with webhook
+    forwarding + logging fallback.
+  - SEO complete (metadata, canonicals, OG/Twitter, JSON-LD ×3, robots,
+    sitemap). Security headers. CI workflow. vercel.json. .env.example.
+- **Verification:** `npm run build` (23 routes), `npm run lint`,
+  `npm run typecheck` all pass. Runtime smoke test: all routes 200; API
+  accepts valid leads, returns 422 with field errors for invalid ones.
+
+## Current architecture
+
+See `docs/ARCHITECTURE.md`. In one line: typed content layer
+(`src/content/`) → thin static pages (`src/app/`) → presentation components
+(`src/components/`), with one dynamic lead endpoint and defined seams for
+CMS, property listings and AI search.
+
+## Remaining tasks
+
+Prioritised in `TODO.md`; roadmap in `MASTER_PLAN.md` (Milestones 2–3).
+Headline: deploy to Vercel, wire the lead webhook, property listings module,
+real client logos/testimonials, analytics.
+
+## Known blockers
+
+1. **Vercel deployment** — no Vercel authentication exists in this
+   environment; manual import required (exact steps in HANDOVER.md).
+2. **Lead destination** — `LEAD_WEBHOOK_URL` needs a real endpoint from the
+   founder (recommended: Google Apps Script → email + Sheet, zero cost).
+3. **Assets** — client logos, property photos, research PDFs, final social
+   URLs (currently platform root links), and Instagram/Facebook/LinkedIn
+   handles need to be supplied.
+4. **Prior local work** — if `D:\Mahesh\Mindcept` still exists on the
+   founder's machine, review it for reusable assets before discarding.
+
+## Design decisions
+
+- Real estate advisory vision wins over Context.md's consulting narrative
+  (GAP_ANALYSIS.md Finding 2 — evidence-based).
+- Tailwind 4 tokens instead of shadcn/ui for launch: fewer moving parts,
+  the prototype's design system maps 1:1 to CSS variables. shadcn can be
+  added when interactive surface grows (backlog).
+- CSS/IntersectionObserver reveal animations instead of Framer Motion:
+  same visual result at zero bundle cost; revisit if animation needs grow.
+- One `/api/enquiry` endpoint with a discriminated union instead of one per
+  form: single CRM integration point.
+- Client marquee uses text chips (as the prototype does) until real logo
+  assets are licensed/supplied.
+
+## Dependencies
+
+Runtime: next 15.5, react 19.2, zod 3.25. Dev: tailwindcss 4.1,
+typescript 5.9, eslint 9 + eslint-config-next. Node 22. No other services.
+
+## Next recommended actions
+
+1. Merge this branch to `main` (or review first) — CI will verify.
+2. Import repo into Vercel (steps in README/HANDOVER) and deploy.
+3. Point mindceptconsulting.com DNS at Vercel.
+4. Create the lead webhook and set `LEAD_WEBHOOK_URL` in Vercel env.
+5. Start Milestone 2 with the property listings module (biggest business
+   feature outstanding from the client requirement doc).

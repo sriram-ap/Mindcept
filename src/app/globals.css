@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+/*
+ * MindCept brand tokens — sourced from the approved design prototype.
+ * ink/slate: near-black surfaces · jewel: deep green · ember: gold accent.
+ */
+@theme {
+  --color-ink: #0e0e10;
+  --color-slate: #1e1e24;
+  --color-jewel: #14403a;
+  --color-ember: #c6a45c;
+  --color-ember-bright: #e4ce94;
+  --color-ember-deep: #9c7c32;
+  --color-paper: #ffffff;
+  --color-line: #e4dbc9;
+  --color-line-dark: rgba(255, 255, 255, 0.1);
+  --color-muted: #6b6a72;
+  --color-muted-dark: rgba(255, 255, 255, 0.6);
+
+  --font-display: var(--font-archivo), sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+
+  --radius-card: 14px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  @apply bg-paper text-ink antialiased;
+  font-family: var(--font-sans);
+}
+
+/* Scroll-reveal (progressive enhancement; content visible without JS). */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* No-JS fallback: never hide content. */
+@media (scripting: none) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Hero slide crossfade */
+.slide-fade {
+  animation: slideFade 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+@keyframes slideFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Client logo marquee */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+.marquee-track.reverse {
+  animation-direction: reverse;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* Focus visibility (WCAG) */
+:focus-visible {
+  outline: 2px solid var(--color-ember);
+  outline-offset: 2px;
+}
