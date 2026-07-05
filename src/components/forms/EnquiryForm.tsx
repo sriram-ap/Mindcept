@@ -69,7 +69,7 @@ export function EnquiryForm() {
         {errors.name ? <p className="mt-1 text-xs text-red-600">{errors.name}</p> : null}
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="enq-mobile" className="block text-xs font-medium text-muted">
             Mobile number *

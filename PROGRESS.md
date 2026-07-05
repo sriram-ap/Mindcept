@@ -1,6 +1,23 @@
 # PROGRESS.md
 
-Snapshot date: 2026-07-04 (strategy-alignment session)
+Snapshot date: 2026-07-05 (post-QA audit)
+
+## 2026-07-05 — Full production QA pass (docs/FINAL_AUDIT.md)
+
+- Repository audit completed → `docs/REPOSITORY_AUDIT.md` (no duplicates;
+  inventory + feature classification).
+- Browser QA (Playwright/Chromium): every route error-free; zero horizontal
+  overflow at 375/768/1280/1600/2560.
+- Lighthouse (production build): home 95/100/100/100, service page
+  98/100/100/100; CLS 0.
+- Defects found & fixed: mobile grid overflow (missing `grid-cols-1` base on
+  21 responsive grids), two `<dl>` semantic/visual ordering bugs, missing
+  global error boundary (`src/app/error.tsx` added).
+- Lead API re-verified: enquiry ✅, listing ✅, invalid → 422, bad JSON → 400.
+
+---
+
+Earlier snapshot: 2026-07-04 (strategy-alignment session)
 
 ## Completed work
 

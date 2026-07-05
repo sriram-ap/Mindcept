@@ -110,7 +110,7 @@ export default async function ServicePage({ params }: Props) {
       {/* Overview + highlights */}
       <section className="bg-paper py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <Reveal className="grid gap-10 lg:grid-cols-2">
+          <Reveal className="grid grid-cols-1 gap-10 lg:grid-cols-2">
             <div>
               <h2 className="font-display text-2xl font-semibold text-ink sm:text-3xl">
                 {service.leadHeading}
@@ -119,7 +119,7 @@ export default async function ServicePage({ params }: Props) {
                 {service.lead}
               </p>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {service.highlights.map(([heading, description]) => (
                 <div
                   key={heading}
@@ -147,7 +147,7 @@ export default async function ServicePage({ params }: Props) {
             <h2 className="font-display text-2xl font-semibold text-ink">
               {service.blockTitle}
             </h2>
-            <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <ol className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {service.process.map(([heading, description], i) => (
                 <li
                   key={heading}
@@ -171,7 +171,7 @@ export default async function ServicePage({ params }: Props) {
               <h2 className="font-display text-xl font-semibold text-ink">
                 More in {pillar.title}
               </h2>
-              <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {siblings.map((sibling) => (
                   <Link
                     key={sibling.slug}

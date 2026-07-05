@@ -27,7 +27,7 @@ export function Differentiators() {
           title="Three things we are best at."
           lead="Every mandate is underwritten on first-hand market data and protected by rigorous diligence — so the advice you act on is the advice that holds up."
         />
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
           {differentiators.map((d) => (
             <Reveal
               key={d.tag}
@@ -63,7 +63,7 @@ export function Pillars() {
           title="Four practice areas. One integrated team."
           lead="End-to-end real estate solutions across the full asset life cycle. Select a practice to see the service lines within it."
         />
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
+        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
           {pillars.map((pillar) => (
             <Reveal
               key={pillar.slug}
@@ -124,7 +124,7 @@ export function Milestones() {
           title="Milestones that built the firm."
           lead="Two decades of consolidated experience, condensed into the numbers our clients trust us with."
         />
-        <ol className="mt-12 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+        <ol className="mt-12 grid grid-cols-1 gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {milestones.map((m) => (
             <Reveal as="li" key={m.heading} className="border-l-2 border-ember/50 pl-6">
               <p className="font-display text-4xl font-semibold">
@@ -156,7 +156,7 @@ export function ProcessSteps() {
           title="A proven advisory process."
           lead="From mapping your exact operational needs to handing over the keys, we manage the entire journey — saving time, cost and risk."
         />
-        <ol className="mt-12 grid gap-6 md:grid-cols-3">
+        <ol className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
           {processSteps.map((step) => (
             <Reveal
               as="li"
@@ -241,7 +241,7 @@ export function SocialSection() {
           title="Stay close to the market."
           lead="Insights, live mandates and on-ground updates across our channels."
         />
-        <div className="mt-10 grid gap-4 sm:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
           {socials
             .filter((s) => s.key !== "youtube")
             .map((s) => (
@@ -288,7 +288,7 @@ export function Research() {
           title="Market intelligence, published."
           lead="Data-backed perspectives on India’s industrial, warehousing and commercial markets."
         />
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
           {research.map((item) => (
             <Reveal
               key={item.slug}
@@ -356,13 +356,13 @@ export function ListProperty() {
               ["300+", "Corporate clients"],
               ["30+", "Cities covered"],
             ].map(([value, label]) => (
-              <div key={label}>
+              <div key={label} className="flex flex-col">
+                <dt className="order-2 mt-1 text-xs uppercase tracking-wider text-white/60">
+                  {label}
+                </dt>
                 <dd className="font-display text-2xl font-semibold text-ember-bright">
                   {value}
                 </dd>
-                <dt className="mt-1 text-xs uppercase tracking-wider text-white/60">
-                  {label}
-                </dt>
               </div>
             ))}
           </dl>

@@ -108,7 +108,7 @@ export function Hero() {
         {/* Stat strip */}
         <dl className="mt-16 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-line-dark pt-8 sm:grid-cols-3 lg:grid-cols-6">
           {stats.map((stat) => (
-            <div key={stat.label}>
+            <div key={stat.label} className="flex flex-col">
               <dt className="order-2 mt-1 text-xs uppercase tracking-wider text-white/50">
                 {stat.label}
               </dt>

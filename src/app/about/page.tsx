@@ -61,7 +61,7 @@ export default function AboutPage() {
             title="Four practice areas, one accountable team."
             lead="From industrial land to capital markets, MindCept owns the complete journey of a real estate decision."
           />
-          <div className="mt-10 grid gap-4 sm:grid-cols-2">
+          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
             {pillars.map((pillar) => (
               <Reveal key={pillar.slug}>
                 <Link
@@ -93,7 +93,7 @@ export default function AboutPage() {
             eyebrow="Track Record"
             title="Milestones that built the firm."
           />
-          <ol className="mt-12 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+          <ol className="mt-12 grid grid-cols-1 gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
             {milestones.map((m) => (
               <Reveal as="li" key={m.heading} className="border-l-2 border-ember/50 pl-6">
                 <p className="font-display text-4xl font-semibold">
