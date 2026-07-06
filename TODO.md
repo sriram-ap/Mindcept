@@ -1,5 +1,16 @@
 # TODO.md
 
+## V1.1 asset & credential queue (founder input needed)
+
+- [ ] Approved client logo files → R2 `client-logos/` → `clients.logoUrl`
+- [ ] Per-client engagement wording sign-off (content/clients.ts)
+- [ ] Real property inventory (≥5 listings) → flip ENABLE_PROPERTIES +
+      NEXT_PUBLIC_ENABLE_PROPERTIES
+- [ ] MongoDB Atlas URI + Cloudflare R2 credentials in Vercel env
+- [ ] Additional counters (institutional mandates / industrial / warehouse
+      projects) — sourced figures only (ADR-8)
+- [ ] Testimonials, research PDFs, team photos, international imagery
+
 ## Critical (launch blockers)
 
 - [ ] Merge branch `claude/strategy-alignment-gap-analysis-d6zpk2` → `main`

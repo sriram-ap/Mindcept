@@ -31,7 +31,7 @@ export function EnquiryForm() {
       const res = await fetch("/api/enquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(parsed.data),
+        body: JSON.stringify({ ...parsed.data, company_website: data.company_website }),
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       setStatus("success");
@@ -60,6 +60,15 @@ export function EnquiryForm() {
   return (
     <form onSubmit={onSubmit} noValidate className="space-y-4">
       <p className="text-sm text-muted">We typically respond within one business day.</p>
+
+      {/* Honeypot — hidden from humans, catnip for bots */}
+      <div className="hidden" aria-hidden="true">
+        <label>
+          Company website
+          <input type="text" name="company_website" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
+
 
       <div>
         <label htmlFor="enq-name" className="block text-xs font-medium text-muted">

@@ -31,7 +31,7 @@ export function ListPropertyForm() {
       const res = await fetch("/api/enquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(parsed.data),
+        body: JSON.stringify({ ...parsed.data, company_website: data.company_website }),
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       setStatus("success");
@@ -66,6 +66,15 @@ export function ListPropertyForm() {
       <p className="text-sm text-white/70">
         Share the details and our team will respond within one business day.
       </p>
+
+      {/* Honeypot — hidden from humans, catnip for bots */}
+      <div className="hidden" aria-hidden="true">
+        <label>
+          Company website
+          <input type="text" name="company_website" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
+
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>

@@ -105,3 +105,68 @@ export interface SocialChannel {
   description: string;
   url: string;
 }
+
+/* ── V1.1: credibility & property platform ── */
+
+export type ClientCategory =
+  | "Industrial"
+  | "Warehousing"
+  | "Developers"
+  | "Institutional Investors"
+  | "Manufacturing"
+  | "Corporate Occupiers";
+
+/** A client relationship shown on /clients and the Trusted By section. */
+export interface Client {
+  slug: string;
+  name: string;
+  categories: ClientCategory[];
+  industry: string;
+  engagement: string;
+  year?: string;
+  description: string;
+  /** R2/CDN URL once the approved logo asset exists; monogram tile until then. */
+  logoUrl?: string;
+  featured?: boolean;
+}
+
+/** An office / operating location on the Our Reach map. */
+export interface OfficeLocation {
+  slug: string;
+  city: string;
+  region: "India" | "Middle East" | "APAC" | "Global";
+  kind: "office" | "operations";
+  /** Percentage coordinates on the region map viewBox. */
+  map: { x: number; y: number };
+  blurb: string;
+}
+
+export type PropertyType =
+  | "Industrial"
+  | "Warehouse"
+  | "Land"
+  | "Commercial / Office"
+  | "Retail";
+
+export type PropertyStatus = "available" | "leased" | "sold" | "upcoming";
+
+/** A property listing (Milestone 2 platform; storage-agnostic). */
+export interface Property {
+  slug: string;
+  title: string;
+  description: string;
+  city: string;
+  state: string;
+  price: string;
+  propertyType: PropertyType;
+  status: PropertyStatus;
+  areaSqft: number;
+  /** R2/CDN URLs; empty until approved assets exist. */
+  images: string[];
+  documents: { label: string; url: string }[];
+  coordinates?: { lat: number; lng: number };
+  broker: { name: string; phone: string; email: string };
+  amenities: string[];
+  featured?: boolean;
+  seoDescription: string;
+}

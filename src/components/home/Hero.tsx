@@ -3,6 +3,14 @@
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { heroSlides, stats } from "@/content/home";
+import { CountUp } from "@/components/ui/CountUp";
+
+/** Split "₹1,000" into prefix "₹" and numeric 1000 for the counter. */
+function parseStat(value: string): { prefix: string; num: number } {
+  const match = value.match(/^([^\d]*)([\d,]+)$/);
+  if (!match) return { prefix: "", num: 0 };
+  return { prefix: match[1], num: parseInt(match[2].replace(/,/g, ""), 10) };
+}
 
 /** Render a slide title, styling the {{…}} phrase in ember gold. */
 function SlideTitle({ title }: { title: string }) {
@@ -55,7 +63,8 @@ export function Hero() {
         }}
       />
       <div className="relative mx-auto flex min-h-[92vh] max-w-7xl flex-col justify-center px-4 pb-24 pt-32 sm:px-6">
-        <div key={index} className="slide-fade max-w-3xl">
+        {/* No entrance animation on the initial slide — it is the LCP element. */}
+        <div key={index} className={`max-w-3xl ${index === 0 ? "" : "slide-fade"}`}>
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-ember-bright">
             {slide.eyebrow}
           </p>
@@ -113,7 +122,10 @@ export function Hero() {
                 {stat.label}
               </dt>
               <dd className="font-display text-2xl font-semibold text-white">
-                {stat.value}
+                <CountUp
+                  value={parseStat(stat.value).num}
+                  prefix={parseStat(stat.value).prefix}
+                />
                 <span className="text-ember">{stat.suffix}</span>
               </dd>
             </div>
