@@ -1,7 +1,5 @@
 import Link from "next/link";
 import {
-  clientsRowA,
-  clientsRowB,
   differentiators,
   milestones,
   processSteps,
@@ -14,13 +12,21 @@ import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { SocialGlyph } from "@/components/ui/SocialIcons";
 import { socials } from "@/content/site";
-import { EnquiryForm } from "@/components/forms/EnquiryForm";
-import { ListPropertyForm } from "@/components/forms/ListPropertyForm";
+import dynamic from "next/dynamic";
+
+/* Forms carry the Zod bundle — loaded as separate chunks so validation
+   code stays off the initial critical path. SSR output is unchanged. */
+const EnquiryForm = dynamic(() =>
+  import("@/components/forms/EnquiryForm").then((m) => m.EnquiryForm),
+);
+const ListPropertyForm = dynamic(() =>
+  import("@/components/forms/ListPropertyForm").then((m) => m.ListPropertyForm),
+);
 
 /* ── Why MindCept ── */
 export function Differentiators() {
   return (
-    <section className="bg-paper py-20 sm:py-28">
+    <section className="bg-[#faf7f0] py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="Why MindCept"
@@ -195,42 +201,6 @@ export function ProcessSteps() {
   );
 }
 
-/* ── Trusted clients marquee ── */
-export function Clients() {
-  const row = (names: string[], reverse?: boolean) => (
-    <div className="overflow-hidden" aria-hidden={reverse ? "true" : undefined}>
-      <div
-        className={`marquee-track flex w-max gap-3 py-2 ${reverse ? "reverse" : ""}`}
-      >
-        {[...names, ...names].map((name, i) => (
-          <span
-            key={`${name}-${i}`}
-            className="whitespace-nowrap rounded-full border border-line bg-white px-5 py-2 text-sm font-medium text-muted"
-          >
-            {name}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-
-  return (
-    <section className="bg-[#faf7f0] py-20 sm:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <SectionHeading
-          eyebrow="Trusted By"
-          title="Institutions, occupiers and developers."
-          lead="A selection of organisations across our industrial, warehousing and capital-markets mandates."
-        />
-      </div>
-      <div className="mt-10 space-y-3">
-        {row(clientsRowA)}
-        {row(clientsRowB, true)}
-      </div>
-    </section>
-  );
-}
-
 /* ── Social channels ── */
 export function SocialSection() {
   return (
@@ -281,7 +251,7 @@ export function SocialSection() {
 /* ── Research & insights ── */
 export function Research() {
   return (
-    <section className="bg-[#faf7f0] py-20 sm:py-28">
+    <section className="bg-paper py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="Research & Insights"

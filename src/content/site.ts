@@ -52,6 +52,7 @@ export const socials: SocialChannel[] = [
 
 export const nav = [
   { label: "Services", href: "/#services" },
+  { label: "Clients", href: "/clients" },
   { label: "Company", href: "/about" },
   { label: "Research", href: "/insights" },
   { label: "Tools", href: "/#tools" },

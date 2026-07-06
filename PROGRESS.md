@@ -1,6 +1,25 @@
 # PROGRESS.md
 
-Snapshot date: 2026-07-05 (post-QA audit)
+Snapshot date: 2026-07-05 (V1.1 complete on branch)
+
+## 2026-07-05 — V1.1: Business credibility, property platform & storage (V1_1_CHANGELOG.md)
+
+- Completed: homepage restructured trust-first (Trusted By + interactive
+  Our Reach India map as sections 2–3), /clients showcase (30 relationships,
+  category filter), animated experience counters, /properties +
+  /property/[slug] foundation (flag-gated), data-access layer with
+  MongoDB provider (URI-switched) + seed script, Cloudflare R2 asset layer,
+  feature flags, API rate limiting + honeypot, five components code-split.
+- Verified: lint/typecheck/build clean; Lighthouse 95/100/100/100 (no
+  regression, CLS 0); zero console errors; zero overflow at 5 widths;
+  API happy/invalid/honeypot/rate-limit paths tested. docs/FINAL_QA_V1_1.md.
+- Blockers (founder input): approved client logo files, real property
+  inventory, MONGODB_URI + R2 credentials for production, testimonials,
+  report PDFs, per-client engagement wording sign-off.
+- Assumptions: client engagements phrased as "team transaction experience"
+  (mindcept.in's own framing); no metrics invented (ADR-8).
+- Next: merge branch → deploy → re-run FINAL_QA_V1_1 against production URL
+  → drop in approved assets → flip ENABLE_PROPERTIES when inventory lands.
 
 ## 2026-07-05 — Full production QA pass (docs/FINAL_AUDIT.md)
 

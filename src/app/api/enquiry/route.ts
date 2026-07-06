@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { leadSchema } from "@/lib/leads";
+import { rateLimit } from "@/lib/rate-limit";
 
 /**
  * Lead-capture endpoint for the enquiry and list-your-property forms.
@@ -9,11 +10,29 @@ import { leadSchema } from "@/lib/leads";
  * silently during the pre-CRM launch window.
  */
 export async function POST(request: Request) {
+  const ip =
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+  if (!rateLimit(`enquiry:${ip}`).allowed) {
+    return NextResponse.json(
+      { error: "Too many requests. Please try again in a minute." },
+      { status: 429 },
+    );
+  }
+
   let body: unknown;
   try {
     body = await request.json();
   } catch {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
+  }
+
+  // Honeypot: the hidden "company_website" field is never filled by humans.
+  if (
+    typeof body === "object" &&
+    body !== null &&
+    (body as Record<string, unknown>).company_website
+  ) {
+    return NextResponse.json({ ok: true }); // silently drop bot submissions
   }
 
   const parsed = leadSchema.safeParse(body);
