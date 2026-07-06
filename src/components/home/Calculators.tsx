@@ -115,8 +115,8 @@ export function Calculators() {
           </div>
 
           {tab === "land" ? (
-            <div className="mt-8 grid gap-8 md:grid-cols-2">
-              <div className="grid content-start gap-4 sm:grid-cols-2">
+            <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
+              <div className="grid grid-cols-1 content-start gap-4 sm:grid-cols-2">
                 <Field label="Length" suffix="ft" value={len} onChange={setLen} />
                 <Field label="Width" suffix="ft" value={wid} onChange={setWid} />
               </div>
@@ -133,8 +133,8 @@ export function Calculators() {
           ) : null}
 
           {tab === "roi" ? (
-            <div className="mt-8 grid gap-8 md:grid-cols-2">
-              <div className="grid content-start gap-4 sm:grid-cols-2">
+            <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
+              <div className="grid grid-cols-1 content-start gap-4 sm:grid-cols-2">
                 <Field label="Purchase price" suffix="₹" value={price} onChange={setPrice} />
                 <Field label="Annual rental income" suffix="₹" value={rent} onChange={setRent} />
                 <Field label="Annual expenses" suffix="₹" value={expenses} onChange={setExpenses} />
@@ -154,8 +154,8 @@ export function Calculators() {
           ) : null}
 
           {tab === "value" ? (
-            <div className="mt-8 grid gap-8 md:grid-cols-2">
-              <div className="grid content-start gap-4 sm:grid-cols-2">
+            <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
+              <div className="grid grid-cols-1 content-start gap-4 sm:grid-cols-2">
                 <Field label="Built-up area" suffix="sq ft" value={builtUp} onChange={setBuiltUp} />
                 <Field label="Construction cost" suffix="₹ / sq ft" value={costPsf} onChange={setCostPsf} />
                 <Field label="Land cost" suffix="₹" value={landCost} onChange={setLandCost} />

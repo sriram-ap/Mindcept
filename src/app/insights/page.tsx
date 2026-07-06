@@ -39,7 +39,7 @@ export default function InsightsPage() {
 
       <section className="bg-paper py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {research.map((item) => (
               <Reveal
                 key={item.slug}

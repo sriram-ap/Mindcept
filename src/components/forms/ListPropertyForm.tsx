@@ -67,7 +67,7 @@ export function ListPropertyForm() {
         Share the details and our team will respond within one business day.
       </p>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="lp-type" className={labelClass}>Property type *</label>
           <select id="lp-type" name="propertyType" className={inputClass} defaultValue="Industrial">
@@ -92,7 +92,7 @@ export function ListPropertyForm() {
         </div>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="lp-loc" className={labelClass}>City / location *</label>
           <input id="lp-loc" name="location" required className={inputClass} aria-invalid={!!errors.location} />
@@ -122,7 +122,7 @@ export function ListPropertyForm() {
         <input id="lp-price" name="expectedPrice" className={inputClass} />
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <div>
           <label htmlFor="lp-name" className={labelClass}>Your name *</label>
           <input id="lp-name" name="name" autoComplete="name" required className={inputClass} aria-invalid={!!errors.name} />
