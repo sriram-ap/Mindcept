@@ -33,122 +33,124 @@ export function ReachMap({ locations }: { locations: OfficeLocation[] }) {
     <div>
       {/* ── Map + city directory ── */}
       <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
-        {/* Map */}
+        {/* Map — premium engraved-glass card */}
         <div className="lg:sticky lg:top-24">
-          <svg
-            viewBox="0 0 100 104"
-            aria-hidden="true"
-            className="mx-auto w-full max-w-sm"
-          >
-            <defs>
-              <linearGradient id="reach-fill" x1="0" y1="0" x2="0.3" y2="1">
-                <stop offset="0" stopColor="var(--color-jewel)" stopOpacity="0.14" />
-                <stop offset="1" stopColor="var(--color-jewel)" stopOpacity="0.05" />
-              </linearGradient>
-              <filter id="reach-shadow" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="0" dy="0.5" stdDeviation="0.7" floodColor="var(--color-jewel)" floodOpacity="0.2" />
-              </filter>
-            </defs>
+          <div className="rounded-2xl border border-line/70 bg-[#F6F6F3] p-6 shadow-[0_16px_48px_-24px_rgba(20,64,58,0.28)] sm:p-8">
+            <svg
+              viewBox="0 0 100 112"
+              aria-hidden="true"
+              className="mx-auto w-full max-w-sm"
+            >
+              <defs>
+                {/* Soft grey-green landmass — near-flat, engraved feel */}
+                <linearGradient id="reach-land" x1="0" y1="0" x2="0.25" y2="1">
+                  <stop offset="0" stopColor="#E7ECE8" />
+                  <stop offset="1" stopColor="#D6DED9" />
+                </linearGradient>
+                <filter id="reach-emboss" x="-15%" y="-15%" width="130%" height="130%">
+                  <feDropShadow dx="0" dy="0.5" stdDeviation="0.8" floodColor="#14403A" floodOpacity="0.14" />
+                </filter>
+                <filter id="reach-mark" x="-60%" y="-60%" width="220%" height="220%">
+                  <feDropShadow dx="0" dy="0.3" stdDeviation="0.35" floodColor="#0E0E10" floodOpacity="0.35" />
+                </filter>
+                <clipPath id="reach-clip">
+                  <path d="M39 7 C42 6 45 8 49 9 C54 10 59 12 63 15 C66 17 68 19 70 20 C72 20 73 22 75 22 C79 22 84 25 86 29 C88 31 86 34 83 35 C80 36 78 34 76 35 C74 36 73 38 71 39 C72 41 70 43 68 43 C66 44 65 46 64 48 C62 50 61 52 60 54 C58 58 57 62 56 66 C54 71 53 76 51 81 C49 87 47 92 45 97 C43 102 41 106 39 109 C38 110 37 110 36 108 C35 103 34 98 33 93 C32 87 31 81 30 75 C29 70 28 65 27 60 C26 57 25 56 24 55 C23 55 22 56 21 57 C20 55 19 53 18 52 C16 51 14 52 13 54 C11 55 10 53 11 51 C12 49 15 49 17 48 C15 47 12 47 11 45 C9 43 11 41 14 41 C17 41 19 42 22 41 C24 40 24 37 25 34 C26 30 28 25 30 21 C32 16 34 11 37 8 C38 7 38 7 39 7 Z" />
+                </clipPath>
+              </defs>
 
-            {/* India silhouette — smooth curved outline (premium, no dots) */}
-            <path
-              d="M37 2 C41 2 44 4 44 8 C44 11 47 13 50 15
-                 C54 17 58 19 62 22 C64 24 65 26 68 26
-                 C72 26 76 24 80 26 C83 27 84 30 83 34
-                 C82 38 78 40 74 40 C72 39 71 37 69 36
-                 C67 36 66 40 65 44 C64 48 63 51 60 55
-                 C56 61 53 66 50 72 C47 79 45 85 42 92
-                 C40 96 39 98 37 95 C35 90 33 84 31 78
-                 C29 71 27 64 25 58 C24 54 23 51 20 49
-                 C16 47 11 46 9 42 C8 39 11 37 14 37
-                 C17 37 19 38 21 36 C23 34 23 30 24 27
-                 C26 21 29 14 32 8 C33 5 34 3 37 2 Z"
-              fill="url(#reach-fill)"
-              stroke="var(--color-jewel)"
-              strokeOpacity="0.4"
-              strokeWidth="0.6"
-              strokeLinejoin="round"
-              filter="url(#reach-shadow)"
-            />
+              {/* India silhouette — recognizable, curved, annual-report style */}
+              <path
+                d="M39 7 C42 6 45 8 49 9 C54 10 59 12 63 15 C66 17 68 19 70 20 C72 20 73 22 75 22 C79 22 84 25 86 29 C88 31 86 34 83 35 C80 36 78 34 76 35 C74 36 73 38 71 39 C72 41 70 43 68 43 C66 44 65 46 64 48 C62 50 61 52 60 54 C58 58 57 62 56 66 C54 71 53 76 51 81 C49 87 47 92 45 97 C43 102 41 106 39 109 C38 110 37 110 36 108 C35 103 34 98 33 93 C32 87 31 81 30 75 C29 70 28 65 27 60 C26 57 25 56 24 55 C23 55 22 56 21 57 C20 55 19 53 18 52 C16 51 14 52 13 54 C11 55 10 53 11 51 C12 49 15 49 17 48 C15 47 12 47 11 45 C9 43 11 41 14 41 C17 41 19 42 22 41 C24 40 24 37 25 34 C26 30 28 25 30 21 C32 16 34 11 37 8 C38 7 38 7 39 7 Z"
+                fill="url(#reach-land)"
+                stroke="#6E7B77"
+                strokeOpacity="0.7"
+                strokeWidth="0.6"
+                strokeLinejoin="round"
+                filter="url(#reach-emboss)"
+              />
 
-            {/* Markers */}
-            {india.map((loc) => {
-              const isActive = active === loc.slug;
-              const isHQ = loc.kind === "office";
-              const color = isActive || isHQ ? "var(--color-ember)" : "var(--color-jewel)";
-              return (
-                <g key={loc.slug}>
-                  {isActive ? (
+              {/* Faint internal contour lines (<8% opacity) — subtle elevation */}
+              <g clipPath="url(#reach-clip)" stroke="#14403A" strokeOpacity="0.06" strokeWidth="0.4" fill="none">
+                <path d="M8 44 C28 38 60 40 92 34" />
+                <path d="M12 66 C34 60 56 64 84 58" />
+                <path d="M20 88 C34 84 46 86 60 82" />
+              </g>
+
+              {/* Markers */}
+              {india.map((loc) => {
+                const isActive = active === loc.slug;
+                const isHQ = loc.kind === "office";
+                const fill = isActive || isHQ ? "var(--color-ember)" : "var(--color-jewel)";
+                return (
+                  <g key={loc.slug} className="reach-marker">
+                    {isActive ? (
+                      <>
+                        <circle cx={loc.map.x} cy={loc.map.y} r={3.6} fill="var(--color-ember)" opacity={0.16} />
+                        <circle
+                          cx={loc.map.x}
+                          cy={loc.map.y}
+                          r={1.9}
+                          fill="none"
+                          stroke="var(--color-ember)"
+                          strokeWidth="0.5"
+                          className="reach-pulse"
+                        />
+                      </>
+                    ) : null}
                     <circle
                       cx={loc.map.x}
                       cy={loc.map.y}
-                      r={1.6}
-                      fill="none"
-                      stroke="var(--color-ember)"
-                      strokeWidth="0.5"
-                      className="reach-pulse"
+                      r={isActive ? 2.5 : 1.9}
+                      fill={fill}
+                      stroke="#fff"
+                      strokeWidth="0.45"
+                      filter="url(#reach-mark)"
+                      style={{ transition: "r .2s" }}
                     />
-                  ) : null}
-                  <circle
-                    cx={loc.map.x}
-                    cy={loc.map.y}
-                    r={isActive ? 2.7 : 2}
-                    fill="none"
-                    stroke={color}
-                    strokeWidth="0.5"
-                    strokeOpacity={isActive ? 1 : 0.55}
-                    style={{ transition: "r .2s, stroke-opacity .2s" }}
-                  />
-                  <circle
-                    cx={loc.map.x}
-                    cy={loc.map.y}
-                    r={isActive ? 1.15 : 0.9}
-                    fill={color}
-                    style={{ transition: "r .2s" }}
-                  />
+                  </g>
+                );
+              })}
+
+              {/* Active-city label pill */}
+              {activeLoc ? (
+                <g style={{ pointerEvents: "none" }} className="reach-label">
+                  {(() => {
+                    const left = activeLoc.map.x > 55;
+                    const px = left ? activeLoc.map.x - 3.8 : activeLoc.map.x + 3.8;
+                    const py = activeLoc.map.y;
+                    const w = Math.max(activeLoc.city.length * 1.5 + 3, 10);
+                    const rx = left ? px - w : px;
+                    return (
+                      <>
+                        <rect x={rx} y={py - 2.4} width={w} height={4.8} rx={1.2} fill="var(--color-ink)" />
+                        <text
+                          x={left ? px - w / 2 : px + w / 2}
+                          y={py + 0.7}
+                          textAnchor="middle"
+                          fill="#fff"
+                          className="font-sans"
+                          style={{ fontSize: "2.5px", fontWeight: 600 }}
+                        >
+                          {activeLoc.city}
+                        </text>
+                      </>
+                    );
+                  })()}
                 </g>
-              );
-            })}
+              ) : null}
+            </svg>
 
-            {/* Active-city label pill */}
-            {activeLoc ? (
-              <g style={{ pointerEvents: "none" }}>
-                {(() => {
-                  const left = activeLoc.map.x > 55;
-                  const px = left ? activeLoc.map.x - 3.4 : activeLoc.map.x + 3.4;
-                  const py = activeLoc.map.y;
-                  const w = Math.max(activeLoc.city.length * 1.5 + 3, 10);
-                  const rx = left ? px - w : px;
-                  return (
-                    <>
-                      <rect x={rx} y={py - 2.4} width={w} height={4.8} rx={1.2} fill="var(--color-ink)" />
-                      <text
-                        x={left ? px - w / 2 : px + w / 2}
-                        y={py + 0.7}
-                        textAnchor="middle"
-                        fill="#fff"
-                        className="font-sans"
-                        style={{ fontSize: "2.5px", fontWeight: 600 }}
-                      >
-                        {activeLoc.city}
-                      </text>
-                    </>
-                  );
-                })()}
-              </g>
-            ) : null}
-          </svg>
-
-          {/* Legend */}
-          <div className="mt-6 flex items-center justify-center gap-6 text-xs text-muted">
-            <span className="flex items-center gap-2">
-              <span className="inline-block h-2.5 w-2.5 rounded-full border border-ember bg-ember" />
-              Headquarters
-            </span>
-            <span className="flex items-center gap-2">
-              <span className="inline-block h-2.5 w-2.5 rounded-full border border-jewel/60 bg-jewel" />
-              Operating market
-            </span>
+            {/* Legend */}
+            <div className="mt-6 flex items-center justify-center gap-6 text-xs text-muted">
+              <span className="flex items-center gap-2">
+                <span className="inline-block h-2.5 w-2.5 rounded-full border border-white bg-ember shadow-sm" />
+                Headquarters
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="inline-block h-2.5 w-2.5 rounded-full border border-white bg-jewel shadow-sm" />
+                Operating market
+              </span>
+            </div>
           </div>
         </div>
 
