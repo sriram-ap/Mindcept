@@ -41,6 +41,7 @@ Snapshot date: 2026-07-07 (V1.2 + Reach redesign on branch)
   overflow 375–2560, interaction verified. Build/lint/types clean.
 
 
+Snapshot date: 2026-07-07 (V1.2 complete on branch)
 
 ## 2026-07-07 — V1.2: Customer feedback implementation (V1_2_CHANGELOG.md)
 
