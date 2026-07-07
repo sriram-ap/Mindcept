@@ -128,7 +128,7 @@ export function Milestones() {
           dark
           eyebrow="Track Record"
           title="Milestones that built the firm."
-          lead="Two decades of consolidated experience, condensed into the numbers our clients trust us with."
+          lead="An aggregated 30+ years of consolidated experience, condensed into the numbers our clients trust us with."
         />
         <ol className="mt-12 grid grid-cols-1 gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {milestones.map((m) => (
@@ -374,7 +374,7 @@ export function ContactSection() {
                   <span className="block text-sm font-semibold text-ink">
                     WhatsApp us
                   </span>
-                  <span className="block text-sm text-muted">{site.phonePrimary}</span>
+                  <span className="block text-sm text-muted">{site.whatsappNumber}</span>
                 </span>
               </a>
             </li>
@@ -391,7 +391,9 @@ export function ContactSection() {
                 </span>
                 <span>
                   <span className="block text-sm font-semibold text-ink">Email us</span>
-                  <span className="block text-sm text-muted">{site.email}</span>
+                  <span className="block text-sm text-muted">
+                    {site.email} · {site.emailSales}
+                  </span>
                 </span>
               </a>
             </li>

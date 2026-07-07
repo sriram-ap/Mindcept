@@ -1,5 +1,28 @@
 # PROGRESS.md
 
+Snapshot date: 2026-07-07 (V1.2 complete on branch)
+
+## 2026-07-07 — V1.2: Customer feedback implementation (V1_2_CHANGELOG.md)
+
+- All 8 feedback items implemented & verified: Services mega-menu
+  close-on-scroll/Escape/outside/route; "Aggregated 30+ Years"; Tools→
+  Calculator; AI-search architecture doc (no ChatGPT); Trusted Partners
+  logos R2-ready; enquiry-form document uploads (PDF/DOC/DOCX/DWG/DXF/PNG/
+  JPEG/ZIP, icon, progress, 25 MB, R2-backed); Dubai + international reach;
+  approved contact details + Dubai "Address Coming Soon".
+- Infra: `/api/upload` + R2 write layer + `uploadedFiles` collection;
+  `@aws-sdk/client-s3` (server-only, dynamic import).
+- Quality: deepened `ember-deep` token → WCAG AA site-wide. Lighthouse
+  home 97/100/100/100, contact 98/100/100/100, CLS 0. Build/lint/types
+  clean. See docs/V1_2_QA_REPORT.md.
+- Blockers unchanged: push blocked by wrong-account GitHub credential
+  (V1.1 + V1.2 committed locally, not on origin). Needs R2 + Atlas creds
+  for live uploads/DB; approved logo/photo assets.
+- Next: land the branch (auth fix), configure R2 + Atlas, drop in real
+  logos, flip ENABLE_PROPERTIES when inventory arrives.
+
+---
+
 Snapshot date: 2026-07-05 (V1.1 complete on branch)
 
 ## 2026-07-05 — V1.1: Business credibility, property platform & storage (V1_1_CHANGELOG.md)

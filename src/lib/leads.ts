@@ -11,12 +11,19 @@ const phone = z
   .trim()
   .regex(/^[+]?[\d][\d\s-]{7,14}$/, "Enter a valid mobile number");
 
+/** URLs of files already uploaded to R2 via /api/upload (never raw bytes). */
+const attachments = z
+  .array(z.string().url())
+  .max(10, "Too many attachments")
+  .optional();
+
 export const enquirySchema = z.object({
   kind: z.literal("enquiry"),
   name: z.string().trim().min(2, "Please enter your name"),
   mobile: phone,
   email: z.string().trim().email("Enter a valid email"),
   requirement: z.string().trim().min(5, "Please describe your requirement"),
+  attachments,
 });
 
 export const listingSchema = z.object({
@@ -38,6 +45,7 @@ export const listingSchema = z.object({
   mobile: phone,
   email: z.string().trim().email("Enter a valid email"),
   details: z.string().trim().optional(),
+  attachments,
 });
 
 export const leadSchema = z.discriminatedUnion("kind", [

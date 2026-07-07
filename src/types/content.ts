@@ -141,6 +141,15 @@ export interface OfficeLocation {
   blurb: string;
 }
 
+/** Metadata for a file uploaded via an enquiry form (URL only — bytes live in R2). */
+export interface UploadedFile {
+  url: string;
+  name: string;
+  size: number;
+  contentType: string;
+  uploadedAt: string;
+}
+
 export type PropertyType =
   | "Industrial"
   | "Warehouse"

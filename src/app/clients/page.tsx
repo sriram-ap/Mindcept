@@ -35,9 +35,9 @@ export default async function ClientsPage() {
             Team transaction experience.
           </h1>
           <p className="mt-5 max-w-2xl text-lg text-white/75">
-            The organisations our team has served across two decades of
-            industrial, warehousing, land and capital-markets work — from
-            global manufacturers to institutional investors.
+            The organisations our team has served across an aggregated 30+
+            years of industrial, warehousing, land and capital-markets work —
+            from global manufacturers to institutional investors.
           </p>
         </div>
       </section>

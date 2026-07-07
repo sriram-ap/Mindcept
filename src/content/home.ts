@@ -31,7 +31,7 @@ export const heroSlides: HeroSlide[] = [
 ];
 
 export const stats: Stat[] = [
-  { value: "20", suffix: "+", label: "Years experience" },
+  { value: "30", suffix: "+", label: "Aggregated years of experience" },
   { value: "12", suffix: " Mn+", label: "Sq ft transacted" },
   { value: "2,100", suffix: "+", label: "Acres of land" },
   { value: "₹1,000", suffix: " Cr+", label: "Transaction value" },
@@ -41,12 +41,12 @@ export const stats: Stat[] = [
 
 export const milestones: Milestone[] = [
   {
-    value: "20",
+    value: "30",
     suffix: "+",
     unit: "years",
-    heading: "Two decades of consolidated expertise",
+    heading: "Aggregated 30+ years of experience",
     description:
-      "A founding team with deep, first-hand experience across India’s real estate cycle.",
+      "A founding team whose combined, first-hand experience spans three decades across India’s real estate cycle.",
   },
   {
     value: "12",

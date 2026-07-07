@@ -62,3 +62,27 @@ The requested extra counters (institutional mandates, industrial projects,
 warehouse projects) are not shipped because no sourced figures exist.
 Fabricated numbers on a credibility page are a trust liability. Add to
 `content/home.ts` when the founder supplies them.
+
+## ADR-9 (V1.2) — `@aws-sdk/client-s3` for R2 uploads
+
+Alternatives: hand-rolled SigV4 signing (no dep); Vercel Blob; presigned
+client-direct uploads.
+Reason: uploads are a feature the client explicitly requested and will use,
+so the standard, well-tested S3 client is "substantial value". It is
+**dynamically imported inside the server route only** — verified zero impact
+on the client bundle (shared JS unchanged at 102 kB). Hand-rolled SigV4
+would be untestable here (no R2 creds) and error-prone.
+Trade-offs: server bundle grows (irrelevant on Vercel functions).
+Future: swap to presigned client-direct PUTs if large files strain the
+function payload limit — the `FileUpload`/`/api/upload` contract stays.
+
+## ADR-10 (V1.2) — Deepen the `ember-deep` gold token instead of restyling labels
+
+Alternatives: change each gold label to green; add a second "accessible
+gold" token.
+Reason: `ember-deep` is used exclusively as text (15 sites); at #9c7c32 it
+was ~3.9:1 on white (fails AA for small text). Deepening the single token to
+#86671c (~5.3:1) fixes every occurrence at once, stays in the gold family,
+and preserves the design language. No component churn.
+Trade-offs: the gold labels are marginally deeper — imperceptible in
+practice, verified on screenshots.

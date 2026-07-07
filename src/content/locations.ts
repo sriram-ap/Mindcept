@@ -86,8 +86,22 @@ export const locations: OfficeLocation[] = [
     map: { x: 44, y: 72 },
     blurb: "Integrated business city — manufacturing & warehousing.",
   },
+
+  /* ── International (multi-country ready) ── */
+  {
+    slug: "dubai",
+    city: "Dubai",
+    region: "Middle East",
+    kind: "office",
+    map: { x: 0, y: 0 }, // not plotted on the India map
+    blurb: "UAE office — Middle East real estate advisory. Opening soon.",
+  },
 ];
 
 export function indiaLocations(): OfficeLocation[] {
   return locations.filter((l) => l.region === "India");
+}
+
+export function internationalLocations(): OfficeLocation[] {
+  return locations.filter((l) => l.region !== "India");
 }
