@@ -130,15 +130,32 @@ export interface Client {
   featured?: boolean;
 }
 
+/** Regional grouping for the Our Reach directory. */
+export type IndiaZone =
+  | "West India"
+  | "South India"
+  | "North India"
+  | "East India"
+  | "Central India";
+
 /** An office / operating location on the Our Reach map. */
 export interface OfficeLocation {
   slug: string;
   city: string;
   region: "India" | "Middle East" | "APAC" | "Global";
+  /** Sub-national grouping (India cities only). */
+  zone?: IndiaZone;
   kind: "office" | "operations";
-  /** Percentage coordinates on the region map viewBox. */
+  /** e.g. Dubai — announced but not yet open. */
+  status?: "opening-soon";
+  /** Percentage coordinates on the India map viewBox (India cities only). */
   map: { x: number; y: number };
-  blurb: string;
+  /** One-line business focus. */
+  focus: string;
+  /** Markets served (rendered as chips). */
+  markets: string[];
+  /** Optional longer summary. */
+  blurb?: string;
 }
 
 /** Metadata for a file uploaded via an enquiry form (URL only — bytes live in R2). */

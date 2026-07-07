@@ -108,6 +108,48 @@ body {
   }
 }
 
+/* Our Reach — active marker pulse (SVG, scale-based so it is GPU-cheap) */
+@keyframes reachPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+.reach-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: reachPulse 1.8s ease-out infinite;
+}
+
+/* Card hover elevation (Reach + client logos) */
+.card-lift {
+  transition:
+    transform 0.25s cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 0.25s cubic-bezier(0.22, 0.61, 0.36, 1),
+    border-color 0.2s;
+}
+.card-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -12px rgba(20, 64, 58, 0.25);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reach-pulse {
+    animation: none;
+    opacity: 0;
+  }
+  .card-lift {
+    transition: none;
+  }
+  .card-lift:hover {
+    transform: none;
+  }
+}
+
 /* Focus visibility (WCAG) */
 :focus-visible {
   outline: 2px solid var(--color-ember);

@@ -8,8 +8,8 @@ import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import dynamic from "next/dynamic";
 
-const IndiaMap = dynamic(() =>
-  import("@/components/home/IndiaMap").then((m) => m.IndiaMap),
+const ReachMap = dynamic(() =>
+  import("@/components/home/ReachMap").then((m) => m.ReachMap),
 );
 
 /* ── Trusted By — featured client relationships + marquee strip ── */
@@ -53,7 +53,7 @@ export async function TrustedBy() {
           {featured.map((client) => (
             <Reveal
               key={client.slug}
-              className="flex items-center gap-4 rounded-card border border-line bg-white p-5"
+              className="card-lift group flex items-center gap-4 rounded-card border border-line bg-white p-5"
             >
               <ClientMark name={client.name} logoUrl={client.logoUrl} className="h-12 w-12 shrink-0" />
               <span className="min-w-0">
@@ -81,48 +81,19 @@ export async function TrustedBy() {
 export async function Reach() {
   const repos = await getRepositories();
   const locations = await repos.locations.all();
-  const india = locations.filter((l) => l.region === "India");
-  const international = locations.filter((l) => l.region !== "India");
+  const indiaCount = locations.filter((l) => l.region === "India").length;
 
   return (
     <section id="reach" className="scroll-mt-20 bg-paper py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="Our Reach"
-          title="Across India — and now the Middle East."
-          lead="Ten operating locations across every major Indian industrial and logistics corridor, with a Dubai office extending our advisory into the Middle East."
+          title="On the ground across India."
+          lead={`${indiaCount} operating markets spanning every major industrial and logistics corridor — West, Central, North, South and East — with a Dubai office extending our advisory into the Middle East.`}
         />
         <div className="mt-12">
-          <IndiaMap locations={india} />
+          <ReachMap locations={locations} />
         </div>
-
-        {international.length > 0 ? (
-          <div className="mt-14 border-t border-line pt-10">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-ember-deep">
-              International
-            </p>
-            <ul className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {international.map((loc) => (
-                <li
-                  key={loc.slug}
-                  className="rounded-card border border-line bg-[#faf7f0] p-5"
-                >
-                  <span className="flex items-center justify-between">
-                    <span className="font-display text-base font-semibold text-ink">
-                      {loc.city}
-                    </span>
-                    <span className="rounded-full bg-ember px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-ink">
-                      Opening soon
-                    </span>
-                  </span>
-                  <span className="mt-1.5 block text-xs leading-relaxed text-muted">
-                    {loc.blurb}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : null}
       </div>
     </section>
   );
