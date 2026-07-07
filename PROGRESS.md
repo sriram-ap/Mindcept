@@ -1,5 +1,27 @@
 # PROGRESS.md
 
+Snapshot date: 2026-07-07 (V1.3 on branch)
+
+## 2026-07-07 — V1.3: Our Reach premium industrial-coverage (V1_3_CHANGELOG.md)
+
+- Enhancement (not redesign): premium curved India SVG map + active-marker
+  pulse; coverage summary; regional capability cards (industries +
+  capabilities per region); industrial corridors view (Mumbai–Pune,
+  Ahmedabad–Sanand, Nagpur Logistics, Chennai–Sri City, etc.).
+- Sub-city hubs (Chakan/Sanand/Hosur/Aurangabad) represented as corridors,
+  not new pins — city count unchanged (15 + Dubai). docs/LOCATION_RATIONALE.
+- Client logos: grayscale→colour on hover, card-lift elevation. Shared
+  .card-lift + .reach-pulse (reduced-motion safe).
+- New: content/corridors.ts. Modified in place: ReachMap.tsx,
+  CredibilitySections.tsx, ClientMark.tsx, globals.css. Homepage order
+  unchanged. Nothing removed.
+- QA: lint/typecheck/build clean; Lighthouse home median 95 perf / 100 /
+  100 / 100, CLS 0; zero console errors; zero overflow 375–2560.
+- Docs: V1_3_AUDIT, V1_3_CHANGELOG, REACH_REDESIGN, LOCATION_RATIONALE,
+  UI_IMPROVEMENTS, PERFORMANCE_REPORT.
+
+---
+
 Snapshot date: 2026-07-07 (V1.2 + Reach redesign on branch)
 
 ## 2026-07-07 — V1.2.1: "Our Reach" section redesign (V1_2_CHANGELOG.md)

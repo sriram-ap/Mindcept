@@ -18,8 +18,14 @@ export function ClientMark({
   const url = assetUrl(logoUrl);
   if (url) {
     return (
-      <span className={`flex items-center justify-center overflow-hidden rounded-xl border border-line bg-white p-2 ${className}`}>
-        <img src={url} alt={`${name} logo`} className="max-h-full max-w-full object-contain" loading="lazy" />
+      <span className={`group/mark flex items-center justify-center overflow-hidden rounded-xl border border-line bg-white p-2 ${className}`}>
+        {/* Grayscale at rest, full colour on hover/focus of the surrounding card. */}
+        <img
+          src={url}
+          alt={`${name} logo`}
+          loading="lazy"
+          className="max-h-full max-w-full object-contain opacity-80 grayscale transition duration-300 group-hover:opacity-100 group-hover:grayscale-0 motion-reduce:transition-none"
+        />
       </span>
     );
   }

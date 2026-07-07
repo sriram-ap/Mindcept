@@ -53,7 +53,7 @@ export async function TrustedBy() {
           {featured.map((client) => (
             <Reveal
               key={client.slug}
-              className="flex items-center gap-4 rounded-card border border-line bg-white p-5"
+              className="card-lift group flex items-center gap-4 rounded-card border border-line bg-white p-5"
             >
               <ClientMark name={client.name} logoUrl={client.logoUrl} className="h-12 w-12 shrink-0" />
               <span className="min-w-0">
