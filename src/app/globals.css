@@ -10,7 +10,8 @@
   --color-jewel: #14403a;
   --color-ember: #c6a45c;
   --color-ember-bright: #e4ce94;
-  --color-ember-deep: #9c7c32;
+  /* Deepened from #9c7c32 to clear WCAG AA 4.5:1 on white for small text (~5.3:1). */
+  --color-ember-deep: #86671c;
   --color-paper: #ffffff;
   --color-line: #e4dbc9;
   --color-line-dark: rgba(255, 255, 255, 0.1);

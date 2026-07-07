@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import { nav, site } from "@/content/site";
 import { pillars, services } from "@/content/services";
 
@@ -13,13 +14,46 @@ export function Header() {
   const [solid, setSolid] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const pathname = usePathname();
 
+  // Scroll: toggle the solid background AND close the Services mega menu
+  // so it never lingers over the page while scrolling (feedback V1.2 #1).
   useEffect(() => {
-    const onScroll = () => setSolid(window.scrollY > 40);
+    const onScroll = () => {
+      setSolid(window.scrollY > 40);
+      setMegaOpen(false);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Close the mega menu on Escape, on outside click, and on route change —
+  // while keeping focus management intact for keyboard users.
+  useEffect(() => {
+    if (!megaOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMegaOpen(false);
+    };
+    const onPointer = (e: PointerEvent) => {
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
+        setMegaOpen(false);
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointer);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onPointer);
+    };
+  }, [megaOpen]);
+
+  // Route change closes both the mega menu and the mobile drawer.
+  useEffect(() => {
+    setMegaOpen(false);
+    setDrawerOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = drawerOpen ? "hidden" : "";
@@ -35,6 +69,7 @@ export function Header() {
 
   return (
     <header
+      ref={headerRef}
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         solid || megaOpen || drawerOpen
           ? "bg-ink/95 shadow-lg backdrop-blur"

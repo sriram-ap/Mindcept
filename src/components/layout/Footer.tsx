@@ -55,8 +55,8 @@ export function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/#tools" className="transition-colors hover:text-white">
-                Calculators
+              <Link href="/#calculator" className="transition-colors hover:text-white">
+                Calculator
               </Link>
             </li>
             <li>

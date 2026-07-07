@@ -79,5 +79,10 @@ export function mongoRepositories(uri: string): Repositories {
     research: {
       all: () => collectionOrFallback<ResearchItem>(db, "research", content.research.all),
     },
+    uploadedFiles: {
+      record: async (file) => {
+        await db.collection("uploadedFiles").insertOne(file);
+      },
+    },
   };
 }

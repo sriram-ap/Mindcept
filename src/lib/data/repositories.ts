@@ -1,4 +1,11 @@
-import type { Client, OfficeLocation, Property, ResearchItem, Service } from "@/types/content";
+import type {
+  Client,
+  OfficeLocation,
+  Property,
+  ResearchItem,
+  Service,
+  UploadedFile,
+} from "@/types/content";
 
 /**
  * Data-access layer contracts.
@@ -37,10 +44,16 @@ export interface ResearchRepository {
   all(): Promise<ResearchItem[]>;
 }
 
+export interface UploadedFileRepository {
+  record(file: UploadedFile): Promise<void>;
+}
+
 export interface Repositories {
   clients: ClientRepository;
   properties: PropertyRepository;
   locations: LocationRepository;
   services: ServiceRepository;
   research: ResearchRepository;
+  /** Present only when a database is configured (URL-metadata store). */
+  uploadedFiles?: UploadedFileRepository;
 }

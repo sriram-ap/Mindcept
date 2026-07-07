@@ -38,7 +38,7 @@ export async function TrustedBy() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <SectionHeading
             eyebrow="Trusted By"
-            title="Two decades of transaction experience."
+            title="Aggregated 30+ years of transaction experience."
             lead="Institutions, occupiers, developers and investors our team has worked with across industrial, warehousing and capital-markets mandates."
           />
           <Link
@@ -82,18 +82,47 @@ export async function Reach() {
   const repos = await getRepositories();
   const locations = await repos.locations.all();
   const india = locations.filter((l) => l.region === "India");
+  const international = locations.filter((l) => l.region !== "India");
 
   return (
     <section id="reach" className="scroll-mt-20 bg-paper py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="Our Reach"
-          title="On the ground across India."
-          lead="Ten operating locations spanning every major industrial and logistics corridor — from Tier I metros to emerging growth centres."
+          title="Across India — and now the Middle East."
+          lead="Ten operating locations across every major Indian industrial and logistics corridor, with a Dubai office extending our advisory into the Middle East."
         />
         <div className="mt-12">
           <IndiaMap locations={india} />
         </div>
+
+        {international.length > 0 ? (
+          <div className="mt-14 border-t border-line pt-10">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-ember-deep">
+              International
+            </p>
+            <ul className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {international.map((loc) => (
+                <li
+                  key={loc.slug}
+                  className="rounded-card border border-line bg-[#faf7f0] p-5"
+                >
+                  <span className="flex items-center justify-between">
+                    <span className="font-display text-base font-semibold text-ink">
+                      {loc.city}
+                    </span>
+                    <span className="rounded-full bg-ember px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-ink">
+                      Opening soon
+                    </span>
+                  </span>
+                  <span className="mt-1.5 block text-xs leading-relaxed text-muted">
+                    {loc.blurb}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
       </div>
     </section>
   );
