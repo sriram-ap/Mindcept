@@ -1,6 +1,24 @@
 # PROGRESS.md
 
-Snapshot date: 2026-07-07 (V1.2 complete on branch)
+Snapshot date: 2026-07-07 (V1.2 + Reach redesign on branch)
+
+## 2026-07-07 — V1.2.1: "Our Reach" section redesign (V1_2_CHANGELOG.md)
+
+- Redesigned the Reach section: premium vector India map (removed halftone
+  dots) + zone-grouped city directory (West/Central/North/South/East +
+  International). `IndiaMap.tsx` → `ReachMap.tsx` (replaced, not duplicated).
+- Cities: removed Kolkata; added Nagpur, Nashik, Vadodara, Indore,
+  Coimbatore, Visakhapatnam (each business-justified in the changelog).
+  15 India markets + Dubai. NCR-overlapping suggestions (Noida/Gurugram/
+  Faridabad) and lower-relevance metros deliberately not added.
+- Each city: focus + markets chips; shared hover/keyboard-focus highlight
+  between cards and map markers; map decorative/aria-hidden, cards accessible.
+- Dubai only active international; Singapore/Saudi = "future markets", not
+  fabricated offices.
+- QA: Lighthouse 97/100/100/100, CLS 0, contrast fixed during QA, zero
+  overflow 375–2560, interaction verified. Build/lint/types clean.
+
+
 
 ## 2026-07-07 — V1.2: Customer feedback implementation (V1_2_CHANGELOG.md)
 
