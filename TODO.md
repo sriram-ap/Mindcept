@@ -1,5 +1,27 @@
 # TODO.md
 
+## V1.2 credential queue (to activate what's already built)
+
+- [ ] Cloudflare R2: create bucket + API token → set `R2_*` +
+      `NEXT_PUBLIC_R2_PUBLIC_URL` (uploads go live; steps in docs/R2_SETUP.md)
+- [ ] MongoDB Atlas M0: set `MONGODB_URI` + run `scripts/seed-db.mjs`
+      (docs/MONGODB_SETUP.md)
+- [ ] Dubai office: supply final address → replace "Address Coming Soon"
+      in `content/site.ts#offices`
+- [ ] Approved partner/client logos → R2 `client-logos/` + set `logoUrl`
+- [ ] (Later, non-urgent) ChatGPT AI search — docs/AI_SEARCH_ARCHITECTURE.md
+
+## V1.1 asset & credential queue (founder input needed)
+
+- [ ] Approved client logo files → R2 `client-logos/` → `clients.logoUrl`
+- [ ] Per-client engagement wording sign-off (content/clients.ts)
+- [ ] Real property inventory (≥5 listings) → flip ENABLE_PROPERTIES +
+      NEXT_PUBLIC_ENABLE_PROPERTIES
+- [ ] MongoDB Atlas URI + Cloudflare R2 credentials in Vercel env
+- [ ] Additional counters (institutional mandates / industrial / warehouse
+      projects) — sourced figures only (ADR-8)
+- [ ] Testimonials, research PDFs, team photos, international imagery
+
 ## Critical (launch blockers)
 
 - [ ] Merge branch `claude/strategy-alignment-gap-analysis-d6zpk2` → `main`

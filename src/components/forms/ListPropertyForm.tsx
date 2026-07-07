@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { listingSchema } from "@/lib/leads";
+import { FileUpload, type UploadedAttachment } from "@/components/ui/FileUpload";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -9,12 +10,17 @@ type Status = "idle" | "submitting" | "success" | "error";
 export function ListPropertyForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [attachments, setAttachments] = useState<UploadedAttachment[]>([]);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form).entries());
-    const parsed = listingSchema.safeParse({ kind: "listing", ...data });
+    const parsed = listingSchema.safeParse({
+      kind: "listing",
+      ...data,
+      attachments: attachments.map((a) => a.url),
+    });
     if (!parsed.success) {
       const fieldErrors: Record<string, string> = {};
       for (const [field, messages] of Object.entries(
@@ -31,7 +37,7 @@ export function ListPropertyForm() {
       const res = await fetch("/api/enquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(parsed.data),
+        body: JSON.stringify({ ...parsed.data, company_website: data.company_website }),
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       setStatus("success");
@@ -66,6 +72,15 @@ export function ListPropertyForm() {
       <p className="text-sm text-white/70">
         Share the details and our team will respond within one business day.
       </p>
+
+      {/* Honeypot — hidden from humans, catnip for bots */}
+      <div className="hidden" aria-hidden="true">
+        <label>
+          Company website
+          <input type="text" name="company_website" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
+
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
@@ -143,10 +158,9 @@ export function ListPropertyForm() {
       <div>
         <label htmlFor="lp-details" className={labelClass}>Property details</label>
         <textarea id="lp-details" name="details" rows={3} className={inputClass} />
-        <p className="mt-1 text-xs text-white/50">
-          Have photos or a brochure? You can share them once we connect.
-        </p>
       </div>
+
+      <FileUpload onChange={setAttachments} tone="dark" labelClassName={labelClass} />
 
       {status === "error" ? (
         <p role="alert" className="text-sm text-red-400">

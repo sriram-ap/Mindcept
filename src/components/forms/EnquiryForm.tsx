@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { enquirySchema } from "@/lib/leads";
+import { FileUpload, type UploadedAttachment } from "@/components/ui/FileUpload";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -9,12 +10,17 @@ type Status = "idle" | "submitting" | "success" | "error";
 export function EnquiryForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [attachments, setAttachments] = useState<UploadedAttachment[]>([]);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form).entries());
-    const parsed = enquirySchema.safeParse({ kind: "enquiry", ...data });
+    const parsed = enquirySchema.safeParse({
+      kind: "enquiry",
+      ...data,
+      attachments: attachments.map((a) => a.url),
+    });
     if (!parsed.success) {
       const fieldErrors: Record<string, string> = {};
       for (const [field, messages] of Object.entries(
@@ -31,7 +37,7 @@ export function EnquiryForm() {
       const res = await fetch("/api/enquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(parsed.data),
+        body: JSON.stringify({ ...parsed.data, company_website: data.company_website }),
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       setStatus("success");
@@ -60,6 +66,15 @@ export function EnquiryForm() {
   return (
     <form onSubmit={onSubmit} noValidate className="space-y-4">
       <p className="text-sm text-muted">We typically respond within one business day.</p>
+
+      {/* Honeypot — hidden from humans, catnip for bots */}
+      <div className="hidden" aria-hidden="true">
+        <label>
+          Company website
+          <input type="text" name="company_website" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
+
 
       <div>
         <label htmlFor="enq-name" className="block text-xs font-medium text-muted">
@@ -95,6 +110,8 @@ export function EnquiryForm() {
           <p className="mt-1 text-xs text-red-600">{errors.requirement}</p>
         ) : null}
       </div>
+
+      <FileUpload onChange={setAttachments} />
 
       {status === "error" ? (
         <p role="alert" className="text-sm text-red-600">

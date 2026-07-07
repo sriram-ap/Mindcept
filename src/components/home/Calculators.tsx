@@ -86,10 +86,10 @@ export function Calculators() {
   ];
 
   return (
-    <section id="tools" className="scroll-mt-20 bg-[#faf7f0] py-20 sm:py-28">
+    <section id="calculator" className="scroll-mt-20 bg-[#faf7f0] py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading
-          eyebrow="Tools"
+          eyebrow="Calculator"
           title="Real estate calculators."
           lead="Quick, indicative estimates for land area, investment returns and industrial / warehouse project value. For a full assessment, talk to our advisory team."
         />
