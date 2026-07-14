@@ -5,7 +5,7 @@ import { SocialLinks } from "@/components/ui/SocialIcons";
 
 export function Footer() {
   return (
-    <footer className="bg-ink text-white/75">
+    <footer className="bg-contrast text-white/75">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-4">
         <div>
           <p className="font-display text-lg font-bold text-white">
@@ -111,10 +111,10 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="transition-colors hover:text-white"
               >
-                WhatsApp us
+                WhatsApp
               </a>
             </li>
-            <li className="pt-2 text-white/50">
+            <li className="pt-2 text-white/65">
               {site.address.city}, {site.address.region}, India
             </li>
           </ul>
@@ -122,7 +122,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-line-dark">
-        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-5 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-5 text-xs text-white/65 sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <p>
             © {new Date().getFullYear()} {site.legalName}. All rights reserved.
           </p>

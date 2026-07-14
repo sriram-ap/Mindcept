@@ -171,11 +171,11 @@ export function ListPropertyForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="w-full rounded-full bg-ember px-6 py-3 text-sm font-semibold text-ink transition-colors hover:bg-ember-bright disabled:opacity-60"
+        className="w-full rounded-full bg-ember px-6 py-3 text-sm font-semibold text-on-accent transition-colors hover:bg-ember-bright disabled:opacity-60"
       >
         {status === "submitting" ? "Submitting…" : "Submit property →"}
       </button>
-      <p className="text-xs text-white/50">
+      <p className="text-xs text-white/65">
         By submitting, you agree to be contacted by Mindcept Consulting LLP.
       </p>
     </form>

@@ -1,14 +1,53 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { nav, site } from "@/content/site";
 import { pillars, services } from "@/content/services";
+import { useTranslations } from "next-intl";
+import {
+  CitySelect,
+  LanguageSelect,
+  ThemeSelect,
+} from "@/components/layout/HeaderControls";
 
 /**
- * Sticky site header: transparent over the hero, solid on scroll.
- * Services expands into a mega-menu on desktop; a drawer serves mobile.
+ * MindCept brand mark — renders the brand asset file
+ * (public/brand/mindcept-logo.png, retina 3200×1400) via next/image; no
+ * logo artwork is drawn in code. To ship a newer original, overwrite that
+ * one file — no code change needed. The gold artwork sits in a premium
+ * container (champagne gradient edge, thin ivory border, soft luxury
+ * shadow, subtle glass) purely for readability; the artwork itself is
+ * untouched.
+ */
+function BrandMark() {
+  return (
+    <span
+      className="inline-flex items-center overflow-hidden rounded-xl border border-[#fbf7ee]/70 p-[3px] shadow-[0_6px_22px_-8px_rgba(0,0,0,0.55),0_0_0_1px_rgba(198,164,92,0.25)] backdrop-blur-sm"
+      style={{
+        background:
+          "linear-gradient(135deg, #f4e3b8 0%, #e0bd6a 55%, #caa14a 100%)",
+      }}
+    >
+      <Image
+        src="/brand/mindcept-logo.png"
+        alt="MindCept"
+        width={110}
+        height={48}
+        quality={90}
+        priority
+        className="h-11 w-auto rounded-[9px]"
+      />
+    </span>
+  );
+}
+
+/**
+ * Executive header — sticky, transparent over the dark hero, glass on
+ * scroll. Desktop: nav + city / language / theme selectors + CTA.
+ * Mobile: drawer with the same controls.
  */
 export function Header() {
   const [solid, setSolid] = useState(false);
@@ -17,8 +56,6 @@ export function Header() {
   const headerRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
 
-  // Scroll: toggle the solid background AND close the Services mega menu
-  // so it never lingers over the page while scrolling (feedback V1.2 #1).
   useEffect(() => {
     const onScroll = () => {
       setSolid(window.scrollY > 40);
@@ -29,8 +66,6 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close the mega menu on Escape, on outside click, and on route change —
-  // while keeping focus management intact for keyboard users.
   useEffect(() => {
     if (!megaOpen) return;
     const onKey = (e: KeyboardEvent) => {
@@ -49,7 +84,6 @@ export function Header() {
     };
   }, [megaOpen]);
 
-  // Route change closes both the mega menu and the mobile drawer.
   useEffect(() => {
     setMegaOpen(false);
     setDrawerOpen(false);
@@ -67,26 +101,28 @@ export function Header() {
     setMegaOpen(false);
   };
 
+  const t = useTranslations("common");
+
+  // Routes without a dark hero (admin console) need the solid bar from the
+  // start — the transparent state assumes a bg-contrast hero underneath.
+  const forceSolid = pathname?.startsWith("/admin") ?? false;
+
   return (
     <header
       ref={headerRef}
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        solid || megaOpen || drawerOpen
-          ? "bg-ink/95 shadow-lg backdrop-blur"
+      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow] duration-300 ${
+        solid || megaOpen || drawerOpen || forceSolid
+          ? "border-b border-white/10 bg-contrast/85 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.55)] backdrop-blur-md"
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <Link
-          href="/"
-          className="font-display text-lg font-bold tracking-tight text-white"
-          onClick={close}
-        >
-          Mind<span className="text-ember">Cept</span>
-          <span className="sr-only"> — {site.tagline}</span>
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-6 px-4 sm:px-6">
+        <Link href="/" className="shrink-0 pe-5" onClick={close}>
+          <BrandMark />
+          <span className="sr-only">MindCept — {site.tagline}</span>
         </Link>
 
-        <nav aria-label="Primary" className="hidden items-center gap-6 lg:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-7 lg:flex">
           <button
             type="button"
             className="text-sm font-medium text-white/85 transition-colors hover:text-ember-bright"
@@ -95,12 +131,14 @@ export function Header() {
             onClick={() => setMegaOpen((v) => !v)}
           >
             Services
-            <span aria-hidden="true" className="ml-1 text-xs">
+            <span aria-hidden="true" className="ms-1 text-xs">
               {megaOpen ? "▴" : "▾"}
             </span>
           </button>
           {nav
-            .filter((item) => item.label !== "Services")
+            .filter(
+              (item) => item.label !== "Services" && item.label !== "Contact",
+            )
             .map((item) => (
               <Link
                 key={item.href}
@@ -111,14 +149,22 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
+        </nav>
+
+        <div className="hidden items-center gap-2.5 lg:flex">
+          <div className="hidden items-center gap-2 xl:flex">
+            <CitySelect />
+            <LanguageSelect />
+            <ThemeSelect />
+          </div>
           <Link
             href="/contact"
             onClick={close}
-            className="rounded-full bg-ember px-4 py-2 text-sm font-semibold text-ink transition-colors hover:bg-ember-bright"
+            className="ms-1 rounded-full bg-ember px-5 py-2.5 text-sm font-semibold text-on-accent transition-colors hover:bg-ember-bright"
           >
-            Book a consultation
+            {t("bookConsultation")}
           </Link>
-        </nav>
+        </div>
 
         <button
           type="button"
@@ -141,7 +187,7 @@ export function Header() {
       {megaOpen ? (
         <div
           id="mega-menu"
-          className="hidden border-t border-line-dark bg-ink/95 backdrop-blur lg:block"
+          className="hidden border-t border-white/10 bg-contrast/90 backdrop-blur-md lg:block"
         >
           <div className="mx-auto grid max-w-7xl grid-cols-4 gap-8 px-6 py-8">
             {pillars.map((pillar) => (
@@ -176,9 +222,14 @@ export function Header() {
       {drawerOpen ? (
         <nav
           aria-label="Mobile"
-          className="max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-line-dark bg-ink px-6 py-6 lg:hidden"
+          className="max-h-[calc(100vh-5rem)] overflow-y-auto border-t border-white/10 bg-contrast px-6 py-6 lg:hidden"
         >
-          <ul className="space-y-1">
+          <div className="flex flex-wrap items-center gap-2 pb-4">
+            <CitySelect />
+            <LanguageSelect />
+            <ThemeSelect />
+          </div>
+          <ul className="space-y-1 border-t border-white/10 pt-4">
             {pillars.map((pillar) => (
               <li key={pillar.slug}>
                 <p className="pt-3 text-xs font-semibold uppercase tracking-[0.15em] text-ember-bright">
@@ -220,9 +271,9 @@ export function Header() {
               <Link
                 href="/contact"
                 onClick={close}
-                className="block rounded-full bg-ember px-5 py-2.5 text-center text-sm font-semibold text-ink"
+                className="block rounded-full bg-ember px-5 py-2.5 text-center text-sm font-semibold text-on-accent"
               >
-                Book a consultation
+                {t("bookConsultation")}
               </Link>
             </li>
           </ul>

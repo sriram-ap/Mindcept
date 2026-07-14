@@ -26,7 +26,7 @@ const ListPropertyForm = dynamic(() =>
 /* ── Why MindCept ── */
 export function Differentiators() {
   return (
-    <section className="bg-[#faf7f0] py-20 sm:py-28">
+    <section className="bg-tint py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="Why MindCept"
@@ -37,7 +37,7 @@ export function Differentiators() {
           {differentiators.map((d) => (
             <Reveal
               key={d.tag}
-              className="rounded-card border border-line bg-white p-8"
+              className="rounded-card border border-line bg-card p-8"
             >
               <p className="text-xs font-semibold uppercase tracking-[0.15em] text-ember-deep">
                 {d.tag}
@@ -62,18 +62,18 @@ export function Differentiators() {
 /* ── Services (four pillars) ── */
 export function Pillars() {
   return (
-    <section id="services" className="scroll-mt-20 bg-[#faf7f0] py-20 sm:py-28">
+    <section id="services" className="scroll-mt-20 bg-tint py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="Our Services"
           title="Four practice areas. One integrated team."
-          lead="End-to-end real estate solutions across the full asset life cycle. Select a practice to see the service lines within it."
+          lead="The right real estate strategy begins with understanding the business behind it. Sector expertise and practical advisory, integrated across commercial, industrial, warehousing and land assets."
         />
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
           {pillars.map((pillar) => (
             <Reveal
               key={pillar.slug}
-              className="rounded-card border border-line bg-white p-8"
+              className="rounded-card border border-line bg-card p-8"
             >
               <div className="flex items-start justify-between gap-4">
                 <h3 className="font-display text-xl font-semibold text-ink">
@@ -122,13 +122,13 @@ export function Pillars() {
 /* ── Track record timeline ── */
 export function Milestones() {
   return (
-    <section className="bg-ink py-20 text-white sm:py-28">
+    <section className="bg-contrast py-20 text-white sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading
           dark
           eyebrow="Track Record"
           title="Milestones that built the firm."
-          lead="An aggregated 30+ years of consolidated experience, condensed into the numbers our clients trust us with."
+          lead="A legacy built on trusted partnerships, landmark transactions, and a steadfast commitment to delivering meaningful real estate outcomes."
         />
         <ol className="mt-12 grid grid-cols-1 gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {milestones.map((m) => (
@@ -136,7 +136,7 @@ export function Milestones() {
               <p className="font-display text-4xl font-semibold">
                 {m.value}
                 <span className="text-ember">{m.suffix}</span>
-                <span className="ml-2 text-sm font-normal uppercase tracking-wider text-white/50">
+                <span className="ml-2 text-sm font-normal uppercase tracking-wider text-white/65">
                   {m.unit}
                 </span>
               </p>
@@ -167,7 +167,7 @@ export function ProcessSteps() {
             <Reveal
               as="li"
               key={step.index}
-              className="rounded-card border border-line bg-white p-8"
+              className="rounded-card border border-line bg-card p-8"
             >
               <div className="flex items-center justify-between">
                 <div className="flex h-11 w-11 items-center justify-center rounded-full bg-ember/15 text-ember-deep">
@@ -220,7 +220,7 @@ export function SocialSection() {
                   href={s.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-4 rounded-card border border-line bg-white p-5 transition-colors hover:border-ember"
+                  className="group flex items-center gap-4 rounded-card border border-line bg-card p-5 transition-colors hover:border-ember"
                 >
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-jewel/10 text-jewel">
                     <SocialGlyph name={s.key} />
@@ -263,7 +263,7 @@ export function Research() {
             <Reveal
               key={item.slug}
               as="article"
-              className="flex flex-col rounded-card border border-line bg-white p-7"
+              className="flex flex-col rounded-card border border-line bg-card p-7"
             >
               <div className="flex items-center justify-between">
                 <span className="rounded-full bg-jewel/10 px-3 py-1 text-xs font-semibold text-jewel">
@@ -296,7 +296,7 @@ export function ListProperty() {
   return (
     <section
       id="list-property"
-      className="scroll-mt-20 bg-jewel py-20 text-white sm:py-28"
+      className="scroll-mt-20 bg-slate py-20 text-white sm:py-28"
     >
       <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-2">
         <div>
@@ -304,7 +304,7 @@ export function ListProperty() {
             dark
             eyebrow="For Owners · Developers · Channel Partners"
             title="List your property with MindCept."
-            lead="Have industrial, warehousing, land or commercial space to lease or sell? Put it in front of our network of 300+ corporate occupiers and institutional investors — marketed with data-driven pricing and full transaction support."
+            lead="Put your industrial, warehousing, land or commercial asset in front of 300+ corporate occupiers and institutional investors — with data-driven pricing and full transaction support."
           />
           <ul className="mt-8 space-y-3 text-sm text-white/85">
             {[
@@ -327,7 +327,7 @@ export function ListProperty() {
               ["30+", "Cities covered"],
             ].map(([value, label]) => (
               <div key={label} className="flex flex-col">
-                <dt className="order-2 mt-1 text-xs uppercase tracking-wider text-white/60">
+                <dt className="order-2 mt-1 text-xs uppercase tracking-wider text-white/80">
                   {label}
                 </dt>
                 <dd className="font-display text-2xl font-semibold text-ember-bright">
@@ -337,7 +337,7 @@ export function ListProperty() {
             ))}
           </dl>
         </div>
-        <Reveal className="rounded-card border border-white/15 bg-ink/30 p-6 sm:p-8">
+        <Reveal className="rounded-card border border-white/15 bg-contrast/30 p-6 sm:p-8">
           <h3 className="font-display text-xl font-semibold">Submit your property</h3>
           <div className="mt-5">
             <ListPropertyForm />
@@ -372,7 +372,7 @@ export function ContactSection() {
                 </span>
                 <span>
                   <span className="block text-sm font-semibold text-ink">
-                    WhatsApp us
+                    WhatsApp
                   </span>
                   <span className="block text-sm text-muted">{site.whatsappNumber}</span>
                 </span>
@@ -421,7 +421,7 @@ export function ContactSection() {
             </li>
           </ul>
         </div>
-        <Reveal className="rounded-card border border-line bg-white p-6 shadow-sm sm:p-8">
+        <Reveal className="rounded-card border border-line bg-card p-6 shadow-sm sm:p-8">
           <h3 className="font-display text-xl font-semibold text-ink">
             Request a callback
           </h3>
@@ -437,7 +437,7 @@ export function ContactSection() {
 /* ── Closing CTA ── */
 export function CtaBanner() {
   return (
-    <section className="bg-ink py-20 text-white">
+    <section className="bg-contrast py-20 text-white">
       <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
         <Reveal>
           <h2 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
@@ -450,7 +450,7 @@ export function CtaBanner() {
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link
               href="/contact"
-              className="rounded-full bg-ember px-7 py-3 text-sm font-semibold text-ink transition-colors hover:bg-ember-bright"
+              className="rounded-full bg-ember px-7 py-3 text-sm font-semibold text-on-accent transition-colors hover:bg-ember-bright"
             >
               Book a consultation →
             </Link>
@@ -460,7 +460,7 @@ export function CtaBanner() {
               rel="noopener noreferrer"
               className="rounded-full border border-white/25 px-7 py-3 text-sm font-semibold text-white transition-colors hover:border-ember hover:text-ember-bright"
             >
-              WhatsApp us
+              WhatsApp
             </a>
           </div>
         </Reveal>

@@ -14,20 +14,20 @@ export const metadata: Metadata = pageMetadata({
 export default function InsightsPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-ink pb-14 pt-32 text-white">
+      <section className="relative overflow-hidden bg-contrast pb-14 pt-32 text-white">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 70% 60% at 75% 15%, rgba(20,64,58,.6), transparent 60%)",
+              "radial-gradient(ellipse 70% 60% at 75% 15%, rgba(64,58,44,.6), transparent 60%)",
           }}
         />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-ember-bright">
             Research &amp; Insights
           </p>
-          <h1 className="mt-4 max-w-3xl font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+          <h1 className="mt-4 max-w-3xl font-serif text-[2.5rem] font-medium leading-[1.08] tracking-tight sm:text-[3.25rem]">
             Market intelligence, published.
           </h1>
           <p className="mt-5 max-w-2xl text-lg text-white/75">
@@ -44,7 +44,7 @@ export default function InsightsPage() {
               <Reveal
                 key={item.slug}
                 as="article"
-                className="flex flex-col rounded-card border border-line bg-white p-7"
+                className="flex flex-col rounded-card border border-line bg-card p-7"
               >
                 <div className="flex items-center justify-between">
                   <span className="rounded-full bg-jewel/10 px-3 py-1 text-xs font-semibold text-jewel">
@@ -65,7 +65,7 @@ export default function InsightsPage() {
             ))}
           </div>
 
-          <Reveal className="mt-14 rounded-card border border-line bg-[#faf7f0] p-8 text-center">
+          <Reveal className="mt-14 rounded-card border border-line bg-tint p-8 text-center">
             <h2 className="font-display text-xl font-semibold text-ink">
               Want the reports as they publish?
             </h2>

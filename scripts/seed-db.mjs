@@ -44,7 +44,7 @@ const db = client.db(process.env.MONGODB_DB ?? "mindcept");
 const collections = {
   clients: clientsMod.clients,
   locations: locationsMod.locations,
-  properties: propertiesMod.properties,
+  properties: propertiesMod.allProperties ?? propertiesMod.properties,
   services: servicesMod.services,
   research: homeMod.research,
 };

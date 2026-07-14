@@ -18,7 +18,7 @@ export function ClientMark({
   const url = assetUrl(logoUrl);
   if (url) {
     return (
-      <span className={`group/mark flex items-center justify-center overflow-hidden rounded-xl border border-line bg-white p-2 ${className}`}>
+      <span className={`group/mark flex items-center justify-center overflow-hidden rounded-xl border border-line bg-card p-2 ${className}`}>
         {/* Grayscale at rest, full colour on hover/focus of the surrounding card. */}
         <img
           src={url}

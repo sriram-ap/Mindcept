@@ -13,20 +13,20 @@ export const metadata: Metadata = pageMetadata({
 export default function ContactPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-ink pb-14 pt-32 text-white">
+      <section className="relative overflow-hidden bg-contrast pb-14 pt-32 text-white">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 70% 60% at 75% 15%, rgba(20,64,58,.6), transparent 60%)",
+              "radial-gradient(ellipse 70% 60% at 75% 15%, rgba(64,58,44,.6), transparent 60%)",
           }}
         />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-ember-bright">
             Contact
           </p>
-          <h1 className="mt-4 max-w-3xl font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+          <h1 className="mt-4 max-w-3xl font-serif text-[2.5rem] font-medium leading-[1.08] tracking-tight sm:text-[3.25rem]">
             Book a consultation.
           </h1>
           <p className="mt-5 max-w-2xl text-lg text-white/75">
@@ -37,7 +37,7 @@ export default function ContactPage() {
       </section>
 
       {/* Office directory */}
-      <section className="bg-[#faf7f0] py-16 sm:py-20">
+      <section className="bg-tint py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <h2 className="font-display text-2xl font-semibold text-ink sm:text-3xl">
             Our offices
@@ -46,7 +46,7 @@ export default function ContactPage() {
             {offices.map((office) => (
               <Reveal
                 key={office.slug}
-                className="rounded-card border border-line bg-white p-6 sm:p-8"
+                className="rounded-card border border-line bg-card p-6 sm:p-8"
               >
                 <div className="flex items-center justify-between">
                   <h3 className="font-display text-lg font-semibold text-ink">

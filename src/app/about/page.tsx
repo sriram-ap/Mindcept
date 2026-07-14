@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { aboutNarrative, milestones } from "@/content/home";
+import {
+  aboutNarrative,
+  coreValues,
+  milestones,
+  mission,
+  usps,
+  vision,
+} from "@/content/home";
 import { pillars } from "@/content/services";
 import { site } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
@@ -18,20 +25,20 @@ export const metadata: Metadata = pageMetadata({
 export default function AboutPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-ink pb-16 pt-32 text-white sm:pb-24">
+      <section className="relative overflow-hidden bg-contrast pb-16 pt-32 text-white sm:pb-24">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 70% 60% at 75% 15%, rgba(20,64,58,.6), transparent 60%)",
+              "radial-gradient(ellipse 70% 60% at 75% 15%, rgba(64,58,44,.6), transparent 60%)",
           }}
         />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-ember-bright">
             About MindCept
           </p>
-          <h1 className="mt-4 max-w-3xl font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+          <h1 className="mt-4 max-w-3xl font-serif text-[2.5rem] font-medium leading-[1.08] tracking-tight sm:text-[3.25rem]">
             The right <span className="text-ember">MIND</span>set. The right con
             <span className="text-ember">CEPT</span>.
           </h1>
@@ -54,7 +61,67 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-[#faf7f0] py-16 sm:py-24">
+      {/* USPs — client-approved positioning */}
+      <section className="bg-tint py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <SectionHeading
+            eyebrow="How we advise"
+            title="Principles that shape every mandate."
+          />
+          <ol className="mt-12 grid grid-cols-1 gap-x-12 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
+            {usps.map((u, i) => (
+              <Reveal as="li" key={u.title} className="border-t border-ember/40 pt-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-ember-deep">
+                  0{i + 1}
+                </p>
+                <h3 className="mt-2 font-serif text-xl font-medium text-ink">
+                  {u.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted">{u.body}</p>
+              </Reveal>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* Vision & Mission */}
+      <section className="bg-paper py-16 sm:py-24">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-4 sm:px-6 lg:grid-cols-2">
+          <Reveal>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-ember-deep">
+              Vision
+            </p>
+            <p className="mt-5 font-serif text-2xl font-medium leading-snug text-ink">
+              {vision}
+            </p>
+          </Reveal>
+          <Reveal>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-ember-deep">
+              Mission
+            </p>
+            <p className="mt-5 font-serif text-2xl font-medium leading-snug text-ink">
+              {mission}
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Core values */}
+      <section className="bg-tint py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <SectionHeading eyebrow="Core values" title="How we hold ourselves accountable." />
+          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5">
+            {coreValues.map((v) => (
+              <Reveal key={v.title}>
+                <h3 className="font-serif text-lg font-medium text-ink">{v.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{v.body}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-paper py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <SectionHeading
             eyebrow="What we do"
@@ -66,7 +133,7 @@ export default function AboutPage() {
               <Reveal key={pillar.slug}>
                 <Link
                   href={`/services/${pillar.children[0]}`}
-                  className="group flex h-full items-start gap-4 rounded-card border border-line bg-white p-6 transition-colors hover:border-ember"
+                  className="group flex h-full items-start gap-4 rounded-card border border-line bg-card p-6 transition-colors hover:border-ember"
                 >
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-jewel/10 text-jewel">
                     <Icon name={pillar.icon} className="h-5 w-5" />
@@ -86,7 +153,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-ink py-16 text-white sm:py-24">
+      <section className="bg-contrast py-16 text-white sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <SectionHeading
             dark
@@ -112,7 +179,7 @@ export default function AboutPage() {
           <div className="mt-14">
             <Link
               href="/contact"
-              className="inline-block rounded-full bg-ember px-7 py-3 text-sm font-semibold text-ink transition-colors hover:bg-ember-bright"
+              className="inline-block rounded-full bg-ember px-7 py-3 text-sm font-semibold text-on-accent transition-colors hover:bg-ember-bright"
             >
               Work with us →
             </Link>

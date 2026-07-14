@@ -47,7 +47,7 @@ export function AISearch() {
             <button
               type="button"
               onClick={() => ask(query)}
-              className="rounded-full bg-ember px-6 py-3 text-sm font-semibold text-ink transition-colors hover:bg-ember-bright"
+              className="rounded-full bg-ember px-6 py-3 text-sm font-semibold text-on-accent transition-colors hover:bg-ember-bright"
             >
               Ask
             </button>

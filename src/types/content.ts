@@ -172,7 +172,8 @@ export type PropertyType =
   | "Warehouse"
   | "Land"
   | "Commercial / Office"
-  | "Retail";
+  | "Retail"
+  | "Residential";
 
 export type PropertyStatus = "available" | "leased" | "sold" | "upcoming";
 
@@ -187,7 +188,12 @@ export interface Property {
   propertyType: PropertyType;
   status: PropertyStatus;
   areaSqft: number;
-  /** R2/CDN URLs; empty until approved assets exist. */
+  /** Residential configuration line (e.g. "2 & 3 BHK"); replaces the
+      area fact when areaSqft is 0. */
+  configuration?: string;
+  /** Project sub-brand (residential listings) — logo path + name. */
+  brand?: { name: string; logo: string };
+  /** R2/CDN URLs or /public paths; empty until approved assets exist. */
   images: string[];
   documents: { label: string; url: string }[];
   coordinates?: { lat: number; lng: number };
@@ -195,4 +201,17 @@ export interface Property {
   amenities: string[];
   featured?: boolean;
   seoDescription: string;
+  /**
+   * Representative market asset — a real third-party development shown to
+   * illustrate the asset classes MindCept advises on. NOT MindCept-owned or
+   * developed. When true the UI shows the developer, asset class, an official
+   * website link and an advisory disclaimer instead of inventory/pricing copy.
+   */
+  representative?: boolean;
+  /** Third-party developer/owner of a representative asset (public fact). */
+  developer?: string;
+  /** Institutional asset-class label (e.g. "Grade-A Industrial & Logistics Park"). */
+  assetClass?: string;
+  /** Official developer website — opens in a new tab from the UI. */
+  officialWebsite?: string;
 }

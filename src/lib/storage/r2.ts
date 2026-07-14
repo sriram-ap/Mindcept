@@ -28,10 +28,12 @@ export type AssetFolder =
   | "uploads"
   | "forms";
 
-/** Resolve an asset key to a servable URL; absolute URLs pass through. */
+/** Resolve an asset key to a servable URL; absolute URLs and static
+ *  /public paths (leading "/") pass through unchanged. */
 export function assetUrl(keyOrUrl: string | undefined): string | null {
   if (!keyOrUrl) return null;
   if (/^https?:\/\//.test(keyOrUrl)) return keyOrUrl;
+  if (keyOrUrl.startsWith("/")) return keyOrUrl; // static asset in /public
   if (!PUBLIC_BASE) return null; // no bucket configured yet → caller renders placeholder
   return `${PUBLIC_BASE.replace(/\/$/, "")}/${keyOrUrl.replace(/^\//, "")}`;
 }

@@ -35,8 +35,8 @@ export function ClientDirectory({ clients }: { clients: Client[] }) {
             onClick={() => setCategory(c)}
             className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
               category === c
-                ? "bg-jewel text-white"
-                : "bg-white text-ink border border-line hover:border-jewel/50"
+                ? "bg-ember text-on-accent"
+                : "bg-card text-ink border border-line hover:border-jewel/50"
             }`}
           >
             {c}
@@ -53,7 +53,7 @@ export function ClientDirectory({ clients }: { clients: Client[] }) {
         {visible.map((client) => (
           <li
             key={client.slug}
-            className="flex flex-col rounded-card border border-line bg-white p-6"
+            className="flex flex-col rounded-card border border-line bg-card p-6"
           >
             <div className="flex items-center gap-4">
               <ClientMark name={client.name} logoUrl={client.logoUrl} className="h-14 w-14 shrink-0" />

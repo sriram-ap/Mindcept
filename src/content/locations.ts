@@ -4,7 +4,7 @@ import type { IndiaZone, OfficeLocation } from "@/types/content";
  * Our Reach — operating locations across India's industrial & logistics
  * corridors, plus the international presence.
  *
- * These represent MindCept's mandate coverage (only Pune is a physical HQ;
+ * These represent MindCept's mandate coverage (Pune is the primary market;
  * others are active operating markets). Map coordinates are percentages on
  * the India map viewBox (0–100). See CHANGELOG_V1_2.md for the rationale
  * behind each city.
@@ -18,8 +18,8 @@ export const locations: OfficeLocation[] = [
     zone: "West India",
     kind: "office",
     map: { x: 21.4, y: 61.9 },
-    focus: "Headquarters — Industrial & Warehousing",
-    markets: ["Industrial", "Warehousing", "Built-to-Suit", "Land Advisory"],
+    focus: "Industrial & Warehousing",
+    markets: ["Industrial", "Warehousing", "Build-to-Suit", "Land Advisory"],
   },
   {
     slug: "mumbai",

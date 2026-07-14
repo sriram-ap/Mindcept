@@ -12,9 +12,26 @@ export const runtime = "nodejs";
  * stores it in Cloudflare R2 under /uploads and returns the public URL — which
  * is what gets attached to the lead (only the URL is persisted, never the bytes).
  *
- * When R2 is not configured, returns 503 so the client can tell the user that
- * attachments aren't available yet and still submit the enquiry without one.
+ * When R2 is not configured, falls back to writing under public/uploads —
+ * works in development and on self-hosted Node; on serverless (read-only
+ * filesystem) the fallback fails and the client gets the honest 503.
  */
+async function uploadToLocal(
+  key: string,
+  bytes: Uint8Array,
+): Promise<string | null> {
+  try {
+    const { mkdir, writeFile } = await import("node:fs/promises");
+    const { join, dirname } = await import("node:path");
+    const target = join(process.cwd(), "public", key);
+    await mkdir(dirname(target), { recursive: true });
+    await writeFile(target, bytes);
+    return `/${key}`;
+  } catch {
+    return null; // read-only filesystem (serverless) — caller returns 503
+  }
+}
+
 export async function POST(request: Request) {
   const ip =
     request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
@@ -22,16 +39,6 @@ export async function POST(request: Request) {
     return NextResponse.json(
       { error: "Too many uploads. Please try again in a minute." },
       { status: 429 },
-    );
-  }
-
-  if (!r2UploadConfigured()) {
-    return NextResponse.json(
-      {
-        error:
-          "File uploads are not yet enabled. Please submit your enquiry and our team will request documents directly.",
-      },
-      { status: 503 },
     );
   }
 
@@ -55,14 +62,15 @@ export async function POST(request: Request) {
   const key = r2Key("uploads", safeFileName(file.name));
   try {
     const bytes = new Uint8Array(await file.arrayBuffer());
-    const url = await uploadToR2(
-      key,
-      bytes,
-      file.type || "application/octet-stream",
-    );
+    const url = r2UploadConfigured()
+      ? await uploadToR2(key, bytes, file.type || "application/octet-stream")
+      : await uploadToLocal(key, bytes);
     if (!url) {
       return NextResponse.json(
-        { error: "Storage is not available. Please try again later." },
+        {
+          error:
+            "File storage is not configured on this deployment. Set the R2 environment variables to enable uploads.",
+        },
         { status: 503 },
       );
     }

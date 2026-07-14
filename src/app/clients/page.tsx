@@ -18,35 +18,35 @@ export default async function ClientsPage() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-ink pb-14 pt-32 text-white">
+      <section className="relative overflow-hidden bg-contrast pb-14 pt-32 text-white">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 70% 60% at 75% 15%, rgba(20,64,58,.6), transparent 60%)",
+              "radial-gradient(ellipse 70% 60% at 75% 15%, rgba(64,58,44,.6), transparent 60%)",
           }}
         />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-ember-bright">
             Trusted By
           </p>
-          <h1 className="mt-4 max-w-3xl font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+          <h1 className="mt-4 max-w-3xl font-serif text-[2.5rem] font-medium leading-[1.08] tracking-tight sm:text-[3.25rem]">
             Team transaction experience.
           </h1>
           <p className="mt-5 max-w-2xl text-lg text-white/75">
-            The organisations our team has served across an aggregated 30+
+            The organisations our team has served across an collective 35+
             years of industrial, warehousing, land and capital-markets work —
             from global manufacturers to institutional investors.
           </p>
         </div>
       </section>
 
-      <section className="bg-[#faf7f0] py-16 sm:py-24">
+      <section className="bg-tint py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <ClientDirectory clients={clients} />
 
-          <Reveal className="mt-14 rounded-card border border-line bg-white p-8 text-center">
+          <Reveal className="mt-14 rounded-card border border-line bg-card p-8 text-center">
             <h2 className="font-display text-xl font-semibold text-ink">
               Join the organisations that trust MindCept.
             </h2>

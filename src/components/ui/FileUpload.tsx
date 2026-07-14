@@ -123,7 +123,7 @@ export function FileUpload({
   const dark = tone === "dark";
   const dropBase = dark
     ? "border-white/25 bg-white/5 text-white/70 hover:border-ember"
-    : "border-line bg-white text-muted hover:border-ember";
+    : "border-line bg-card text-muted hover:border-ember";
 
   return (
     <div>
@@ -181,7 +181,7 @@ export function FileUpload({
             <li
               key={`${item.name}-${i}`}
               className={`rounded-lg border p-2.5 text-xs ${
-                dark ? "border-white/15 bg-white/5 text-white/80" : "border-line bg-white text-ink"
+                dark ? "border-white/15 bg-white/5 text-white/80" : "border-line bg-card text-ink"
               }`}
             >
               <div className="flex items-center justify-between gap-3">
