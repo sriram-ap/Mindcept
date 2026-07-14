@@ -87,7 +87,7 @@ export function IndiaMap({ locations }: { locations: OfficeLocation[] }) {
               className={`w-full rounded-card border p-4 text-left transition-colors ${
                 active === loc.slug
                   ? "border-ember bg-ember/5"
-                  : "border-line bg-white hover:border-ember/50"
+                  : "border-line bg-card hover:border-ember/50"
               }`}
             >
               <span className="flex items-center justify-between">

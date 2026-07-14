@@ -1,6 +1,6 @@
 import { clients, featuredClients } from "@/content/clients";
 import { locations } from "@/content/locations";
-import { featuredProperties, properties } from "@/content/properties";
+import { allProperties, featuredProperties } from "@/content/properties";
 import { research } from "@/content/home";
 import { getService, services } from "@/content/services";
 import type { Repositories } from "./repositories";
@@ -13,9 +13,9 @@ export function contentRepositories(): Repositories {
       featured: async () => featuredClients(),
     },
     properties: {
-      all: async () => properties,
+      all: async () => allProperties,
       featured: async () => featuredProperties(),
-      bySlug: async (slug) => properties.find((p) => p.slug === slug) ?? null,
+      bySlug: async (slug) => allProperties.find((p) => p.slug === slug) ?? null,
     },
     locations: {
       all: async () => locations,

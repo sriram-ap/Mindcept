@@ -60,13 +60,13 @@ export default async function ServicePage({ params }: Props) {
       />
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-ink pb-16 pt-32 text-white sm:pb-20">
+      <section className="relative overflow-hidden bg-contrast pb-16 pt-32 text-white sm:pb-20">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 70% 60% at 80% 10%, rgba(20,64,58,.6), transparent 60%)",
+              "radial-gradient(ellipse 70% 60% at 80% 10%, rgba(64,58,44,.6), transparent 60%)",
           }}
         />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
@@ -93,7 +93,7 @@ export default async function ServicePage({ params }: Props) {
           <p className="mt-8 text-xs font-semibold uppercase tracking-[0.25em] text-ember-bright">
             {service.eyebrow}
           </p>
-          <h1 className="mt-4 max-w-3xl font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+          <h1 className="mt-4 max-w-3xl font-serif text-[2.5rem] font-medium leading-[1.08] tracking-tight sm:text-[3.25rem]">
             {service.title}
           </h1>
           <div aria-hidden="true" className="mt-6 h-0.5 w-16 bg-ember" />
@@ -123,7 +123,7 @@ export default async function ServicePage({ params }: Props) {
               {service.highlights.map(([heading, description]) => (
                 <div
                   key={heading}
-                  className="rounded-card border border-line bg-white p-5"
+                  className="rounded-card border border-line bg-card p-5"
                 >
                   <p className="flex items-center gap-2 text-sm font-semibold text-ink">
                     <span
@@ -151,7 +151,7 @@ export default async function ServicePage({ params }: Props) {
               {service.process.map(([heading, description], i) => (
                 <li
                   key={heading}
-                  className="rounded-card border border-line bg-[#faf7f0] p-6"
+                  className="rounded-card border border-line bg-tint p-6"
                 >
                   <span className="font-display text-sm font-semibold text-ember-deep">
                     {String(i + 1).padStart(2, "0")}
@@ -176,7 +176,7 @@ export default async function ServicePage({ params }: Props) {
                   <Link
                     key={sibling.slug}
                     href={`/services/${sibling.slug}`}
-                    className="group flex items-center justify-between rounded-card border border-line bg-white px-6 py-4 transition-colors hover:border-ember"
+                    className="group flex items-center justify-between rounded-card border border-line bg-card px-6 py-4 transition-colors hover:border-ember"
                   >
                     <span className="flex items-center gap-3 text-sm font-medium text-ink">
                       <span className="text-jewel">
@@ -199,7 +199,7 @@ export default async function ServicePage({ params }: Props) {
           <div className="mt-14">
             <Link
               href="/contact"
-              className="inline-block rounded-full bg-ember px-7 py-3 text-sm font-semibold text-ink transition-colors hover:bg-ember-bright"
+              className="inline-block rounded-full bg-ember px-7 py-3 text-sm font-semibold text-on-accent transition-colors hover:bg-ember-bright"
             >
               Talk to an advisor about {service.eyebrow} →
             </Link>

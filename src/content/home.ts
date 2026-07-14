@@ -11,42 +11,42 @@ export const heroSlides: HeroSlide[] = [
   {
     eyebrow: "Where Strategy Meets Space",
     title: "Advisory that spans every {{stage}} of real estate.",
-    lead: "Industrial, warehousing, land, commercial and capital markets — one integrated team, pan-India.",
+    lead: "Strategic real estate advisory across industrial, commercial, residential, warehousing, land and capital markets — Pan-India expertise, regional market intelligence.",
   },
   {
     eyebrow: "Industrial",
     title: "Industrial real estate, {{driven by data}}.",
-    lead: "Tailored, national-scale advice for occupiers, landlords, developers and investors.",
+    lead: "National-scale advice for occupiers, developers and investors.",
   },
   {
     eyebrow: "Warehousing",
     title: "Grade-A warehousing, {{sourced & secured}}.",
-    lead: "Comprehensive supply-chain solutions that optimise every node of your network.",
+    lead: "Supply-chain real estate, from network design to keys.",
   },
   {
     eyebrow: "Land & Capital",
     title: "From land to {{leaseback}}, under one roof.",
-    lead: "Acquisition, valuation, investment sales and capital-markets advisory.",
+    lead: "Acquisition, valuation and capital-markets advisory.",
   },
 ];
 
 export const stats: Stat[] = [
-  { value: "30", suffix: "+", label: "Aggregated years of experience" },
+  { value: "35", suffix: "+", label: "Years of collective expertise" },
   { value: "12", suffix: " Mn+", label: "Sq ft transacted" },
   { value: "2,100", suffix: "+", label: "Acres of land" },
-  { value: "₹1,000", suffix: " Cr+", label: "Transaction value" },
+  { value: "₹2,000", suffix: " Cr+", label: "Transactions facilitated" },
   { value: "300", suffix: "+", label: "Corporate clients" },
   { value: "30", suffix: "+", label: "Cities covered" },
 ];
 
 export const milestones: Milestone[] = [
   {
-    value: "30",
+    value: "35",
     suffix: "+",
     unit: "years",
-    heading: "Aggregated 30+ years of experience",
+    heading: "35+ years of collective expertise",
     description:
-      "A founding team whose combined, first-hand experience spans three decades across India’s real estate cycle.",
+      "A founding team whose combined, first-hand experience spans more than three decades of India’s real estate cycle.",
   },
   {
     value: "12",
@@ -63,10 +63,10 @@ export const milestones: Milestone[] = [
     description: "Acquisition, valuation, partnerships and project advisory at scale.",
   },
   {
-    value: "₹1,000",
+    value: "₹2,000",
     suffix: " Cr+",
     unit: "value",
-    heading: "Aggregate transaction value",
+    heading: "Transactions facilitated",
     description: "Capital deployed and advised across asset classes.",
   },
   {
@@ -99,7 +99,7 @@ export const differentiators: Differentiator[] = [
     icon: "data",
     heading: "A Data-Driven Approach",
     description:
-      "Local, regional and national market data drives every recommendation — from site selection to pricing — not opinion or guesswork.",
+      "Local, regional and national market data drives every recommendation — from site selection to pricing — driven by knowledge, not assumptions.",
   },
   {
     tag: "03 — Advisory",
@@ -197,7 +197,47 @@ export const aiReplies: Record<string, string> = {
 
 /** About page narrative — from the client requirement document, verbatim intent. */
 export const aboutNarrative = [
-  "It is known that real estate cannot be stolen or carried away. But keeping it stagnant never helped anyone either.",
-  "Real estate needs to be nurtured — and that involves smart thinking, timely action and, above all, the correct MINDset. Cohesive planning and expert guidance, coupled with unique methods, help achieve desired results along with optimum returns; making this a conCEPT where the mind needs the right support and key insights to make the right decision.",
-  "Keeping that thought in factual consideration, MINDCEPT was born — a platform to enable our clients to cultivate and magnify their real estate ideas with unique concepts, arrived at after decades of understanding the pulse of the real estate playing field from the ground up.",
+  "Real estate decisions shape the future of businesses, investments and communities. At MindCept, we ensure those decisions are backed by expertise, insight and strategic foresight.",
+  "MindCept is a leading real estate advisory and transaction consulting firm with over 35 years of collective industry experience, delivering comprehensive solutions across industrial, commercial, investment and residential real estate. We partner with corporates, investors, developers, landlords and high-net-worth individuals, helping them navigate an evolving landscape with confidence and clarity.",
+  "Our track record reflects a legacy of trust and performance — over ₹2,000 crores in facilitated transactions and more than 12 million sq ft of successfully transacted real estate, with deep specialisation across MIDC regions and key industrial development corridors.",
+  "From strategic site selection and due diligence to statutory approvals, government liaison, legal compliance, commercial negotiations and transaction management, we provide seamless end-to-end advisory. Guided by integrity, transparency and a client-first approach, we believe real estate is more than an asset — it is a catalyst for business growth and long-term value creation.",
 ];
+
+/** USPs — client-approved positioning (Website_Content.docx). */
+export const usps = [
+  {
+    title: "Strategic thinking. Practical execution.",
+    body: "Exceptional outcomes are realised when informed judgement is matched by disciplined execution. This principle underpins every strategy we develop and every mandate we deliver.",
+  },
+  {
+    title: "Beyond transactions. Built for business.",
+    body: "Every assignment is approached through the lens of business strategy, ensuring real estate decisions strengthen operational capability, investment performance and long-term organisational objectives.",
+  },
+  {
+    title: "Confidence through partnership.",
+    body: "The value of an advisory relationship is measured by the confidence it creates. We cultivate enduring partnerships through objective counsel, unwavering integrity and an uncompromising commitment to our clients\u2019 success.",
+  },
+  {
+    title: "Complexity, simplified.",
+    body: "The most complex transactions require clarity, structure and foresight. We orchestrate every stage with precision, enabling clients to move forward with certainty in a dynamic market.",
+  },
+  {
+    title: "Expertise that endures.",
+    body: "Enduring expertise is built through consistency, not circumstance. Our disciplined approach, deep industry knowledge and commitment to excellence define every engagement.",
+  },
+] as const;
+
+/** Core values — client-approved (Website_Content.docx). */
+export const coreValues = [
+  { title: "Stewardship", body: "We protect every client\u2019s interests with the same diligence and responsibility we would expect for our own." },
+  { title: "Foresight", body: "The best decisions are informed by perspective, preparation and the ability to anticipate what\u2019s next." },
+  { title: "Precision", body: "Every recommendation, analysis and execution is approached with discipline, attention to detail and professional rigour." },
+  { title: "Partnership", body: "Strong relationships are built through collaboration, mutual respect and a shared commitment to meaningful outcomes." },
+  { title: "Commitment", body: "Our responsibility extends beyond the transaction — every engagement is supported with consistency, responsiveness and long-term dedication." },
+] as const;
+
+export const vision =
+  "To redefine the standards of real estate advisory through insight, integrity and innovation — becoming the trusted partner behind every significant real estate decision.";
+
+export const mission =
+  "To deliver intelligent advisory, seamless execution and client-focused solutions through expertise, integrity and an unwavering commitment to excellence in every engagement.";

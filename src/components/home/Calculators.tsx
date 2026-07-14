@@ -30,7 +30,7 @@ function Field({
         inputMode="decimal"
         value={Number.isFinite(value) ? value : ""}
         onChange={(e) => onChange(parseFloat(e.target.value) || 0)}
-        className="mt-1 w-full rounded-lg border border-line bg-white px-3 py-2 text-sm text-ink focus:border-ember focus:outline-none"
+        className="mt-1 w-full rounded-lg border border-line bg-card px-3 py-2 text-sm text-ink focus:border-ember focus:outline-none"
       />
     </div>
   );
@@ -86,7 +86,7 @@ export function Calculators() {
   ];
 
   return (
-    <section id="calculator" className="scroll-mt-20 bg-[#faf7f0] py-20 sm:py-28">
+    <section id="calculator" className="scroll-mt-20 bg-tint py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="Calculator"
@@ -94,7 +94,7 @@ export function Calculators() {
           lead="Quick, indicative estimates for land area, investment returns and industrial / warehouse project value. For a full assessment, talk to our advisory team."
         />
 
-        <div className="mt-10 rounded-card border border-line bg-white p-6 shadow-sm sm:p-8">
+        <div className="mt-10 rounded-card border border-line bg-card p-6 shadow-sm sm:p-8">
           <div role="tablist" aria-label="Calculators" className="flex flex-wrap gap-2">
             {tabs.map((t) => (
               <button
@@ -105,7 +105,7 @@ export function Calculators() {
                 onClick={() => setTab(t.key)}
                 className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                   tab === t.key
-                    ? "bg-jewel text-white"
+                    ? "bg-ember text-on-accent"
                     : "bg-line/40 text-ink hover:bg-line/70"
                 }`}
               >

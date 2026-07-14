@@ -1,27 +1,119 @@
 @import "tailwindcss";
 
 /*
- * MindCept brand tokens — sourced from the approved design prototype.
- * ink/slate: near-black surfaces · jewel: deep green · ember: gold accent.
+ * MindCept V2 design tokens — every component consumes these semantic
+ * variables; nothing hardcodes colours. Runtime themes override them on
+ * :root[data-theme=…] (no reload; persisted in localStorage as mc-theme).
+ *
+ * Semantics
+ *   paper     page surface            ink       primary foreground text
+ *   card      raised card surface     tint      warm/soft section surface
+ *   contrast  always-dark hero/footer surface (text-white children)
+ *   slate     elevated dark surface on contrast sections
+ *   jewel     brand primary           ember     CTA / accent
+ *   on-accent text placed on ember accents (always near-black)
  */
 @theme {
-  --color-ink: #0e0e10;
-  --color-slate: #1e1e24;
-  --color-jewel: #14403a;
+  /*
+   * V4 default theme — "Executive": dark luxury. Black, graphite, warm
+   * bronze, gold. Cinematic, institutional — the Vantrock register.
+   */
+  --color-ink: #f3eee4;
+  --color-slate: #1a1712;
+  --color-contrast: #080706;
+  --color-jewel: #c6a45c;
   --color-ember: #c6a45c;
-  --color-ember-bright: #e4ce94;
-  /* Deepened from #9c7c32 to clear WCAG AA 4.5:1 on white for small text (~5.3:1). */
-  --color-ember-deep: #86671c;
-  --color-paper: #ffffff;
-  --color-line: #e4dbc9;
+  --color-ember-bright: #e6cf98;
+  --color-ember-deep: #e0c589;
+  --color-paper: #0c0b09;
+  --color-card: #16130f;
+  --color-tint: #121009;
+  --color-on-accent: #0c0b09;
+  --color-line: rgba(214, 184, 120, 0.20);
   --color-line-dark: rgba(255, 255, 255, 0.1);
-  --color-muted: #6b6a72;
+  --color-muted: #a79e8c;
   --color-muted-dark: rgba(255, 255, 255, 0.6);
+  --color-success: #7fae93;
+  --color-warning: #d8a960;
+  /* Brand sphere — the MindCept orb, re-toned per theme so the mark reads
+     on every header. */
+  --sphere-hi: #f2e6c8;
+  --sphere-mid: #c6a45c;
+  --sphere-lo: #6b5326;
 
   --font-display: var(--font-archivo), sans-serif;
   --font-sans: var(--font-inter), system-ui, sans-serif;
+  /* Luxury serif for large headlines — quiet, editorial, institutional. */
+  --font-serif: var(--font-fraunces), Georgia, "Times New Roman", serif;
 
-  --radius-card: 14px;
+  --radius-card: 16px;
+
+  --shadow-card: 0 10px 40px -28px rgba(0, 0, 0, 0.5);
+  --shadow-lift: 0 12px 24px -12px rgba(0, 0, 0, 0.5);
+}
+
+/*
+ * Theme 2 — "Corporate": mindcept.in-inspired. Deep navy structure, cool
+ * white surfaces, gold accent. The navy brand sphere is at home here.
+ */
+:root[data-theme="corporate"] {
+  --color-ink: #182137;
+  --color-slate: #26355f;
+  --color-contrast: #1d2b53;
+  --color-jewel: #1d2b53;
+  --color-ember: #b08a4a;
+  --color-ember-bright: #d9c08c;
+  --color-ember-deep: #6f5527;
+  --color-paper: #f7f8fa;
+  --color-card: #ffffff;
+  --color-tint: #eef0f5;
+  --color-on-accent: #182137;
+  --color-line: #dde1ea;
+  --color-muted: #5d6474;
+  --color-success: #2f6b4f;
+  --color-warning: #8a5a1e;
+  --sphere-hi: #dfe7f7;
+  --sphere-mid: #6d84c0;
+  --sphere-lo: #1d2b53;
+}
+
+/*
+ * Theme 3 — "Bright Day": premium ivory daylight. Warm ivory, champagne,
+ * stone, soft gold — luxury, not plain white. Bronze brand sphere.
+ */
+:root[data-theme="brightday"] {
+  --color-ink: #1c1b18;
+  --color-slate: #262420;
+  --color-contrast: #171613;
+  --color-jewel: #514b3d;
+  --color-ember: #b08a4a;
+  --color-ember-bright: #d9c08c;
+  --color-ember-deep: #77592b;
+  --color-paper: #f7f1e6;
+  --color-card: #fffdf8;
+  --color-tint: #efe7d7;
+  --color-on-accent: #1c1b18;
+  --color-line: #e6dcc9;
+  --color-muted: #6d685e;
+  --color-success: #3d6b4f;
+  --color-warning: #8a5a1e;
+  --sphere-hi: #e9d9b8;
+  --sphere-mid: #b08a4a;
+  --sphere-lo: #5c4623;
+}
+
+/* Default (Executive dark) gets a soft gold ambient wash. */
+body {
+  background-image: radial-gradient(
+    55rem 38rem at 50% -12%,
+    rgba(198, 164, 92, 0.06),
+    transparent 60%
+  );
+  background-attachment: fixed;
+}
+:root[data-theme="corporate"] body,
+:root[data-theme="brightday"] body {
+  background-image: none;
 }
 
 html {
@@ -125,6 +217,32 @@ body {
   animation: reachPulse 1.8s ease-out infinite;
 }
 
+/* Active-city label reveal */
+@keyframes reachLabel {
+  from {
+    opacity: 0;
+    transform: translateY(0.6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.reach-label {
+  transform-box: fill-box;
+  animation: reachLabel 0.18s ease-out;
+}
+
+/* Marker hover scale (SVG, transform-box so it scales about its own centre) */
+.reach-marker {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.reach-marker:hover {
+  transform: scale(1.15);
+}
+
 /* Card hover elevation (Reach + client logos) */
 .card-lift {
   transition:
@@ -134,7 +252,7 @@ body {
 }
 .card-lift:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 24px -12px rgba(20, 64, 58, 0.25);
+  box-shadow: 0 12px 24px -12px rgba(40, 36, 28, 0.22);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -154,4 +272,64 @@ body {
 :focus-visible {
   outline: 2px solid var(--color-ember);
   outline-offset: 2px;
+}
+
+/* ── V3 luxury presentation utilities ─────────────────────────────────── */
+
+/* Serif headlines: soft optical sizing + tighter tracking for display use. */
+.font-serif {
+  font-optical-sizing: auto;
+  letter-spacing: -0.01em;
+}
+
+/* Premium image frame — clips a slow scale-in on hover (calm, not flashy). */
+.lux-media {
+  overflow: hidden;
+}
+.lux-media img {
+  transition: transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
+.group:hover .lux-media img,
+.lux-media:hover img {
+  transform: scale(1.05);
+}
+@media (prefers-reduced-motion: reduce) {
+  .lux-media img {
+    transition: none;
+  }
+  .group:hover .lux-media img,
+  .lux-media:hover img {
+    transform: none;
+  }
+}
+
+/* Luxury card — larger, softer elevation than card-lift for hero surfaces. */
+.lux-card {
+  transition:
+    transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 0.4s cubic-bezier(0.22, 0.61, 0.36, 1),
+    border-color 0.3s;
+}
+.lux-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px -30px rgba(20, 18, 14, 0.4);
+}
+@media (prefers-reduced-motion: reduce) {
+  .lux-card,
+  .lux-card:hover {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Thin hairline divider used to separate editorial blocks. */
+.rule-accent {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    var(--color-ember) 0%,
+    color-mix(in srgb, var(--color-ember) 20%, transparent) 40%,
+    transparent 100%
+  );
 }

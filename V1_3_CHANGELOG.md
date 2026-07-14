@@ -1,5 +1,36 @@
 # V1_3_CHANGELOG.md
 
+## V1.3.1 — Premium static India SVG (2026-07-07)
+
+Enhancement to the map **only** — section layout, city cards, grouping,
+corridors, capability cards, spacing and typography unchanged. Pure SVG:
+no images, no base64, no map library, no new dependency.
+
+- **feat(map): recognizable India silhouette** — replaced the hand-drawn
+  polygon with a curved, annual-report-style outline (higher flat north,
+  compact NE lobe on a neck, Gujarat/Kutch peninsula, southern taper).
+  Bounding box changed (viewBox `0 0 100 112`), so the 15 marker
+  coordinates were re-tuned to the new outline (`content/locations.ts`).
+- **feat(map): engraved-glass treatment** — map now sits in a premium card
+  (stone `#F6F6F3`, rounded, thin border, soft shadow); landmass uses a
+  near-flat soft grey-green fill, muted-slate stroke, extremely subtle
+  emboss shadow, and 3 faint internal contour lines (6% opacity, clipped to
+  the landmass).
+- **feat(map): premium markers** — dark-emerald fill + thin white border +
+  soft shadow (inactive); gold fill + soft glow + expanding pulse + animated
+  label (active); `1.15×` hover scale via `.reach-marker` (transform-box).
+- **a11y/perf:** map stays `aria-hidden` (cards remain the source of truth);
+  all motion `prefers-reduced-motion`-safe. SVG is a single ~1 KB path
+  (well under the 20 KB budget); no new dependency; client bundle unchanged.
+
+Verified: lint/typecheck/build clean; Lighthouse home **97 / 100 / 100 /
+100**, CLS 0, contrast pass; zero console errors; zero overflow 375–2560;
+markers land correctly and hover/pulse/label work in Chromium.
+`docs/qa/v131-map3.png`.
+
+---
+
+
 Version 1.3 — "Our Reach" premium industrial-coverage experience.
 Date: 2026-07-07. Enhancement release (NOT a redesign). Baseline: `2343eaa`.
 All V1.1 / V1.2 functionality preserved; homepage ordering unchanged.

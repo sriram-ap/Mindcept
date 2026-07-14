@@ -18,14 +18,14 @@ export function SectionHeading({
     <Reveal className="max-w-3xl">
       <p
         id={id}
-        className={`text-xs font-semibold uppercase tracking-[0.2em] ${
+        className={`text-[11px] font-semibold uppercase tracking-[0.28em] ${
           dark ? "text-ember-bright" : "text-ember-deep"
         }`}
       >
         {eyebrow}
       </p>
       <h2
-        className={`mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl ${
+        className={`mt-4 font-serif text-[2rem] font-medium leading-[1.1] tracking-tight sm:text-[2.75rem] ${
           dark ? "text-white" : "text-ink"
         }`}
       >
@@ -33,7 +33,7 @@ export function SectionHeading({
       </h2>
       {lead ? (
         <p
-          className={`mt-4 text-base leading-relaxed sm:text-lg ${
+          className={`mt-5 text-base leading-relaxed sm:text-lg ${
             dark ? "text-muted-dark" : "text-muted"
           }`}
         >

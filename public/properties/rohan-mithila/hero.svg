@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1360 1020" role="img" aria-label="Architectural impression">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="0.4" y2="1">
+    <stop offset="0" stop-color="#211F1B"/><stop offset="1" stop-color="#17161380"/></linearGradient></defs>
+  <rect width="1360" height="1020" fill="#1B1A17"/>
+  <rect width="1360" height="1020" fill="url(#bg)"/>
+  <g fill="none" stroke="#CFC8B8" stroke-opacity="0.28" stroke-width="1.4"><path d="M120 760 L280 620 L280 760 M360 760 L360 500 L470 500 L470 760 M560 760 L560 380 L590 360 L620 380 L620 760 M720 760 L720 540 L820 540 L820 760 M900 760 L900 440 L1010 440 L1010 760 M1090 760 L1090 600 L1180 600 L1180 760"/></g><line x1="90" y1="760" x2="1240" y2="760" stroke="#B08A4A" stroke-opacity="0.5" stroke-width="1.4"/>
+</svg>

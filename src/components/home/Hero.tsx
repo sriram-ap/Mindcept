@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import { heroSlides, stats } from "@/content/home";
 import { CountUp } from "@/components/ui/CountUp";
 
@@ -50,49 +52,87 @@ export function Hero() {
   }, [restart]);
 
   const slide = heroSlides[index];
+  const t = useTranslations("common");
 
   return (
-    <section className="relative overflow-hidden bg-ink text-white">
-      {/* Ambient brand glow */}
+    <section className="relative overflow-hidden bg-contrast text-white">
+      {/* Full-bleed cinematic hero photograph, optimised via next/image
+          (fill + priority — this is the LCP element). To use the official
+          MindCept background, replace public/hero/executive.jpg with the
+          supplied image at the same path (or point src at a new file); no
+          code change is needed. */}
+      <Image
+        src="/hero/executive.jpg"
+        alt=""
+        aria-hidden="true"
+        fill
+        priority
+        sizes="100vw"
+        quality={72}
+        className="pointer-events-none object-cover opacity-90"
+      />
+      {/* Cinematic overlay — dark gradient for readability, theme-adaptive
+          via the contrast token. */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 80% 60% at 70% 20%, rgba(20,64,58,.55), transparent 60%), radial-gradient(ellipse 50% 40% at 20% 90%, rgba(198,164,92,.18), transparent 60%)",
+            "linear-gradient(90deg, var(--color-contrast) 0%, color-mix(in srgb, var(--color-contrast) 76%, transparent) 42%, color-mix(in srgb, var(--color-contrast) 22%, transparent) 100%), linear-gradient(0deg, var(--color-contrast) 0%, transparent 45%)",
         }}
       />
-      <div className="relative mx-auto flex min-h-[92vh] max-w-7xl flex-col justify-center px-4 pb-24 pt-32 sm:px-6">
+      {/* Subtle warm-bronze wash — ties the imagery to the Executive theme. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 mix-blend-soft-light"
+        style={{
+          background:
+            "radial-gradient(ellipse 70% 60% at 78% 30%, color-mix(in srgb, var(--color-ember) 45%, transparent), transparent 65%)",
+        }}
+      />
+
+      <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-4 pb-28 pt-32 sm:px-6">
         {/* No entrance animation on the initial slide — it is the LCP element. */}
-        <div key={index} className={`max-w-3xl ${index === 0 ? "" : "slide-fade"}`}>
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-ember-bright">
+        <div key={index} className={`max-w-4xl ${index === 0 ? "" : "slide-fade"}`}>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-ember-bright">
             {slide.eyebrow}
           </p>
-          <h1 className="mt-5 font-display text-4xl font-semibold leading-tight tracking-tight sm:text-6xl">
+          <h1 className="mt-6 font-serif text-5xl font-medium leading-[1.04] tracking-tight sm:text-7xl xl:text-[5.25rem]">
             <SlideTitle title={slide.title} />
           </h1>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
+          <p className="mt-7 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
             {slide.lead}
+          </p>
+          <p className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/70">
+            <span>Industrial</span>
+            <span aria-hidden="true" className="text-ember">·</span>
+            <span>Commercial</span>
+            <span aria-hidden="true" className="text-ember">·</span>
+            <span>Warehousing &amp; Land</span>
+            <span aria-hidden="true" className="text-ember">·</span>
+            <span>Capital Markets</span>
+            <span aria-hidden="true" className="text-ember">·</span>
+            <span className="text-ember-bright">India &amp; Middle East</span>
           </p>
         </div>
 
-        <div className="mt-10 flex flex-wrap items-center gap-4">
+        <div className="mt-11 flex flex-wrap items-center gap-4">
           <Link
             href="/#services"
-            className="rounded-full bg-ember px-6 py-3 text-sm font-semibold text-ink transition-colors hover:bg-ember-bright"
+            className="rounded-full bg-ember px-7 py-3.5 text-sm font-semibold text-on-accent shadow-[0_14px_30px_-14px_rgba(176,138,74,0.7)] transition-colors hover:bg-ember-bright"
           >
-            Explore our services →
+            {t("exploreServices")} →
           </Link>
           <Link
             href="/#list-property"
-            className="rounded-full border border-white/25 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-ember hover:text-ember-bright"
+            className="rounded-full border border-white/25 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:border-ember hover:text-ember-bright"
           >
-            List your property
+            {t("listProperty")}
           </Link>
         </div>
 
         <div
-          className="mt-10 flex gap-2"
+          className="mt-11 flex gap-2"
           role="tablist"
           aria-label="Hero slides"
         >
@@ -115,13 +155,13 @@ export function Hero() {
         </div>
 
         {/* Stat strip */}
-        <dl className="mt-16 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-line-dark pt-8 sm:grid-cols-3 lg:grid-cols-6">
+        <dl className="mt-16 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-line-dark pt-9 sm:grid-cols-3 lg:grid-cols-6">
           {stats.map((stat) => (
             <div key={stat.label} className="flex flex-col">
-              <dt className="order-2 mt-1 text-xs uppercase tracking-wider text-white/50">
+              <dt className="order-2 mt-1.5 text-[11px] uppercase tracking-[0.14em] text-white/65">
                 {stat.label}
               </dt>
-              <dd className="font-display text-2xl font-semibold text-white">
+              <dd className="font-serif text-3xl font-medium text-white">
                 <CountUp
                   value={parseStat(stat.value).num}
                   prefix={parseStat(stat.value).prefix}

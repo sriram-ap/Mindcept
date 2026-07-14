@@ -16,7 +16,7 @@ export default function GlobalError({
   }, [error]);
 
   return (
-    <section className="flex min-h-[70vh] flex-col items-center justify-center bg-ink px-4 pt-16 text-center text-white">
+    <section className="flex min-h-[70vh] flex-col items-center justify-center bg-contrast px-4 pt-16 text-center text-white">
       <p className="text-xs font-semibold uppercase tracking-[0.25em] text-ember-bright">
         Something went wrong
       </p>
@@ -31,7 +31,7 @@ export default function GlobalError({
         <button
           type="button"
           onClick={reset}
-          className="rounded-full bg-ember px-6 py-3 text-sm font-semibold text-ink transition-colors hover:bg-ember-bright"
+          className="rounded-full bg-ember px-6 py-3 text-sm font-semibold text-on-accent transition-colors hover:bg-ember-bright"
         >
           Try again
         </button>
